@@ -1,0 +1,113 @@
+{
+    "US_Text": {
+        "Title": "Terms & Conditions",
+        "AllAgree": "Agree all & Continue",
+        "Start": "Continue",
+        "Agree": "You have agreed to {0}.",
+        "Disagree": "You have disagreed to {0}.",
+        "AgainSetting": "You may change the settings from the in-game settings.",
+        "TimeFormat": "MM/dd/yyyy hh:mm:ss",
+        "FontName": "NotoSans-Regular SDF"
+    },
+    "US": [
+        {
+            "Key": "TermsOfService",
+            "Url": "https://policy.111percent.net/10001/prod/terms-of-service/en/index.html",
+            "Page": 175,
+            "Text": "Terms of Service",
+            "compulsory": true
+        },
+        {
+            "Key": "Privacy",
+            "Url": "https://policy.111percent.net/10001/prod/privacy-policy/en/index.html",
+            "Page": 176,
+            "Text": "Privacy Policy",
+            "compulsory": true
+        }
+    ],
+    "KR_Text": {
+        "Title": "게임 이용 약관",
+        "AllAgree": "모두 동의하고 시작",
+        "Start": "시작",
+        "Agree": "{0} 에 동의하셨습니다.",
+        "Disagree": "{0} 에 동의가 취소되었습니다.",
+        "AgainSetting": "게임 내 설정에서 다시 변경 할 수 있습니다.",
+        "TimeFormat": "yyyy/MM/dd hh:mm:ss",
+        "FontName": "NotoSansCJKkr-Regular SDF"
+    },
+    "KR": [
+        {
+            "Key": "TermsOfService",
+            "Url": "https://policy.111percent.net/10001/prod/terms-of-service/ko/index.html",
+            "Page": 175,
+            "Text": "(필수) 이용약관",
+            "compulsory": true
+        },
+        {
+            "Key": "Privacy",
+            "Url": "https://policy.111percent.net/10001/prod/ingame-agreement/ko/index.html",
+            "Page": 176,
+            "Text": "(필수) 개인 정보 수집 및 이용 동의",
+            "compulsory": true
+        },
+        {
+            "Key": "ServerPush",
+            "Url": "",
+            "Page": 177,
+            "Text": "(선택) 마케팅 푸시알림 동의",
+            "compulsory": false
+        }
+    ],
+    "EU_Text": {
+        "Title": "Terms & Conditions",
+        "AllAgree": "Agree all & Continue",
+        "Start": "Continue",
+        "Agree": "You have agreed to {0}.",
+        "Disagree": "You have disagreed to {0}.",
+        "AgainSetting": "You may change the settings from the in-game settings.",
+        "TimeFormat": "MM/dd/yyyy hh:mm:ss",
+        "FontName": "NotoSans-Regular SDF"
+    },
+    "EU": [
+        {
+            "Key": "TermsOfService",
+            "Url": "https://policy.111percent.net/10001/prod/terms-of-service/en/index.html",
+            "Page": 175,
+            "Text": "Terms of Service",
+            "compulsory": true
+        },
+        {
+            "Key": "Privacy",
+            "Url": "https://policy.111percent.net/10001/prod/privacy-policy/en/index.html",
+            "Page": 176,
+            "Text": "Privacy Policy",
+            "compulsory": true
+        }
+    ],
+    "TH_Text": {
+        "Title": "Terms & Conditions",
+        "AllAgree": "Agree all & Continue",
+        "Start": "Continue",
+        "Agree": "You have agreed to {0}.",
+        "Disagree": "You have disagreed to {0}.",
+        "AgainSetting": "You may change the settings from the in-game settings.",
+        "TimeFormat": "MM/dd/yyyy hh:mm:ss",
+        "FontName": "NotoSans-Regular SDF"
+    },
+    "TH": [
+        {
+            "Key": "TermsOfService",
+            "Url": "https://policy.111percent.net/10001/prod/terms-of-service/en/index.html",
+            "Page": 175,
+            "Text": "Terms of Service",
+            "compulsory": true
+        },
+        {
+            "Key": "PDPA",
+            "Url": "https://policy.111percent.net/10001/prod/personal-data-protection-act/th/index.html",
+            "Page": 176,
+            "Text": "PDPA",
+            "compulsory": true
+        }
+    ]
+}
