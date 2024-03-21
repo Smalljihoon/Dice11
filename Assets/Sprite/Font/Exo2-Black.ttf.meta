@@ -10,7 +10,8 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Exo 2
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: ab011b456f993b942b3b558fd8f15cf4, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
