@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
-        enemy = MoveTowards()
+        //enemy = MoveTowards()
     }
 
     
