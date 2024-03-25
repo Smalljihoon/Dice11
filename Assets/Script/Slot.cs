@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    [SerializeField] Image slotIcon;
-    [SerializeField] GameObject dice;
+    [SerializeField] GameObject slot;
+
 
     private void Update()
     {
-        
+
+        Vector2 location = slot.gameObject.transform.position;
+
     }
 }
     //public GameObject[] slots;
