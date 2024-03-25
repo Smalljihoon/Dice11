@@ -12,8 +12,6 @@ public class Slot : MonoBehaviour
     private void Update()
     {
 
-        Vector2 location = slot.gameObject.transform.position;
-
     }
 }
     //public GameObject[] slots;

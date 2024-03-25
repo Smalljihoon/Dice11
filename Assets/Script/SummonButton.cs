@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class SummonButton : MonoBehaviour
@@ -8,48 +9,52 @@ public class SummonButton : MonoBehaviour
     [SerializeField] Button bt;
     [SerializeField] GameObject dice;
 
+    [SerializeField] Transform[] slots = null;
+
+
     //게임 오브젝트로 사용하기 코드 :
     //GameObject obj = Instantiate(Resources.Load("/경로/프리팹이름")) as GameObject;
 
     private void Start()
     {
-        bt = GetComponent<Button>();
+        bt.onClick.AddListener(DiceSummon);
     }
 
-    void diceSummon()
+    public void DiceSummon()
     {
-        Slot slot = GetComponent<Slot>();
-        dice = new GameObject();
-
-        
-        if(bt == Input.GetMouseButton(0)) 
+        bool isEmptySlot = false;
+        foreach (Transform slot in slots)
         {
-            
-            dice.SetActive(true);
+            if (slot.childCount == 0)
+            {
+                isEmptySlot = true;
+                break;
+            }
+        }
+
+        if (isEmptySlot)
+        {
+            int a = Random.Range(0, slots.Length);
+            RandomPick(a);
+        }
+        else
+        {
+            Debug.Log("꽉참");
+        }
+    }
+    public void RandomPick(int n)
+    {
+        // slot이 null이면 소환
+        if (slots[n].childCount == 0)
+        {
+            var diceGO = Instantiate(dice, slots[n]);
+        }
+        // slot이 null이 아니면 재귀호출
+        else
+        {
+            int a = Random.Range(0, slots.Length);
+            RandomPick(a);
         }
     }
 
-
-    //public Image targetImage; // 기존 이미지
-    //public Sprite newImage;   // 바뀔 이미지
-    //private Sprite originalImage; // 원래 이미지 저장
-
-    //private void Start()
-    //{
-    //    // 시작할 때 원래 이미지를 저장하는 코드
-    //    originalImage = targetImage.sprite;
-    //}
-
-    //public void ChangeImage()
-    //{
-    //    // 버튼을 누를 때 이미지가 바뀌고 3초 뒤에 원래 이미지로 돌아오는 코드
-    //    targetImage.sprite = newImage;
-    //    Invoke("RestoreOriginalImage", 3f);
-    //}
-
-    //private void RestoreOriginalImage()
-    //{
-    //    // 3초 후에 원래 이미지로 복원하는 코드
-    //    targetImage.sprite = originalImage;
-    //}
 }
