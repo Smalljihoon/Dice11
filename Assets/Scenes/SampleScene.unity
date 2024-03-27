@@ -292,7 +292,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37324162}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 55504313}
   - component: {fileID: 55504314}
   - component: {fileID: 55504315}
+  - component: {fileID: 55504316}
   m_Layer: 0
   m_Name: start
   m_TagString: Untagged
@@ -456,6 +457,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb01c864587a50e46be60d24f0f47d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &55504316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55504312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 358801296a53ee9419ef36c48019d263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 9212246679185868631, guid: 1c882c4abc229a7428394e105cf2e785, type: 3}
+  StartSpawn: {fileID: 55504313}
+  EndSpawn: {fileID: 1761939752}
+  spawnRate: 0.5
+  offsetRate: 0
 --- !u!1 &74048789
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,7 +1987,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576825504}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -3675,7 +3693,7 @@ GameObject:
   - component: {fileID: 1085287294}
   m_Layer: 0
   m_Name: First_wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3689,7 +3707,7 @@ Transform:
   m_GameObject: {fileID: 1085287292}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.974, y: 2.1, z: 0}
+  m_LocalPosition: {x: -2.13, y: 1.92, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3868,7 +3886,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131690210}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -6247,7 +6265,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824144635}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -6537,7 +6555,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854672439}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -6651,7 +6669,7 @@ GameObject:
   - component: {fileID: 1986956114}
   m_Layer: 0
   m_Name: Second_wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6665,7 +6683,7 @@ Transform:
   m_GameObject: {fileID: 1986956112}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.52, y: 1.71, z: 0}
+  m_LocalPosition: {x: 2.42, y: 1.71, z: 0}
   m_LocalScale: {x: 0.19158724, y: 2.6792302, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
