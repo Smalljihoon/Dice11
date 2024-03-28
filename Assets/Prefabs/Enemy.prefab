@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2521885257633711060}
   - component: {fileID: 316977505232704967}
   - component: {fileID: 5711763984424385227}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: -45370312388316178}
   - component: {fileID: 2932508986349600062}
   - component: {fileID: 966257976072273621}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -367,3 +367,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 9212246679185868631}
   speed: 1
+  distance: 0.3
