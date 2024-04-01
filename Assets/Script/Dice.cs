@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Dice : MonoBehaviour
 {
-    [SerializeField] Sprite dicesprite;
+    
 
 }

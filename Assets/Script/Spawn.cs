@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEditorInternal;
 
 public class Spawn : MonoBehaviour
 {
@@ -25,24 +26,33 @@ public class Spawn : MonoBehaviour
         rateTime = spawnRate;
         StartSpawn = GetComponent<Transform>();
         EndSpawn = GetComponent<Transform>();
-
     }
 
     void Update()
     {
         //if (!isSpawn)
-            //return;
-        
+        //return;
+
         rateTime -= Time.deltaTime;
         if (rateTime <= 0.0f)
         {
-            //Vector2 position = StartSpawn.position;
             Transform transform = StartSpawn.transform;
             GameObject newEnemy = enemyPrefab;
             newEnemy = Instantiate(enemyPrefab);
+            //Vector2 position = StartSpawn.position;
             newEnemy.transform.position = transform.position;
             //newEnemy.transform.position = position;
             rateTime = spawnRate;
+
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Hole")
+        {
+            Destroy(enemyPrefab);
+        }
+    }
+
 }
