@@ -340,7 +340,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9212246679185868631}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ca3657b504fcc2945a0f0a816a58147e, type: 2}
   m_CullingMode: 0
@@ -365,7 +365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce17193fcdbaa3d4985f46830fae2a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 9212246679185868631}
-  speed: 1
+  speed: 0.5
   distance: 0.3
-  Life: 0
+  hp_text: {fileID: 5711763984424385227}

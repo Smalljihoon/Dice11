@@ -6,7 +6,6 @@ using UnityEditorInternal;
 
 public class Spawn : MonoBehaviour
 {
-
     [Header("Object")]
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] GameObject EndSpawn;
@@ -15,26 +14,18 @@ public class Spawn : MonoBehaviour
     [SerializeField] Transform StartSpawn;
 
     [Header("Position")]
-    [SerializeField] float spawnRate;               // 스폰주기
-    [SerializeField] float offsetRate;              // 스폰주기 차이
+    //[SerializeField] float offsetRate;              // 스폰주기 차이
 
     bool isSpawn;
-    float rateTime;
 
     void Start()
     {
-        rateTime = spawnRate;
         StartSpawn = GetComponent<Transform>();
         EndSpawn = GetComponent<GameObject>();
     }
 
-    void Update()
+    public Enemy SpawnEnemy()
     {
-        //if (!isSpawn)
-        //return;
-
-        rateTime -= Time.deltaTime;
-        if (rateTime <= 0.0f)
         {
             Transform transform = StartSpawn.transform;
             GameObject newEnemy = enemyPrefab;
@@ -42,8 +33,15 @@ public class Spawn : MonoBehaviour
             //Vector2 position = StartSpawn.position;
             newEnemy.transform.position = transform.position;
             //newEnemy.transform.position = position;
-            rateTime = spawnRate;
-            
+            var enemy = newEnemy.GetComponent<Enemy>();
+
+            // 라운드 레벨에 따라서 
+            // 라운드 레벨 같은거는 게임매니저가 가지고있을 가능성이 높음 
+            // 몹 체력 조절 
+            enemy.Init(Random.Range(100, 300));
+            return enemy;
         }
     }
+
+
 }

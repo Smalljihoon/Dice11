@@ -347,6 +347,7 @@ GameObject:
   - component: {fileID: 1960215452514177595}
   - component: {fileID: 3704541859580919779}
   - component: {fileID: 2360354128882983098}
+  - component: {fileID: -7073792828587992129}
   m_Layer: 0
   m_Name: Dice_FIRE
   m_TagString: Untagged
@@ -473,6 +474,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
+--- !u!114 &-7073792828587992129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3333765030500886424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6bef202a54273441a21c5b1e2854e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 8332096300920895400, guid: 698df16af2d0d374cb6353e1528e5518, type: 3}
+  damage: 10
+  level: 2
 --- !u!1 &3785991505933256087
 GameObject:
   m_ObjectHideFlags: 0
