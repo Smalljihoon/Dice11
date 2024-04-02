@@ -433,7 +433,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: f31c2b7e2431c2c47bb0c7f1091a99bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -470,8 +470,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 9212246679185868631, guid: 1c882c4abc229a7428394e105cf2e785, type: 3}
+  EndSpawn: {fileID: 1761939751}
   StartSpawn: {fileID: 55504313}
-  EndSpawn: {fileID: 1761939752}
   spawnRate: 0.5
   offsetRate: 0
 --- !u!1 &74048789
@@ -647,67 +647,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90177096}
   m_CullTransparentMesh: 1
---- !u!1001 &210145913
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1960215452514177595, guid: d9e661d7e910ba248b516cb475711580, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1960215452514177595, guid: d9e661d7e910ba248b516cb475711580, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.78
-      objectReference: {fileID: 0}
-    - target: {fileID: 1960215452514177595, guid: d9e661d7e910ba248b516cb475711580, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1960215452514177595, guid: d9e661d7e910ba248b516cb475711580, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1960215452514177595, guid: d9e661d7e910ba248b516cb475711580, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1960215452514177595, guid: d9e661d7e910ba248b516cb475711580, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1960215452514177595, guid: d9e661d7e910ba248b516cb475711580, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1960215452514177595, guid: d9e661d7e910ba248b516cb475711580, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1960215452514177595, guid: d9e661d7e910ba248b516cb475711580, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1960215452514177595, guid: d9e661d7e910ba248b516cb475711580, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3333765030500886424, guid: d9e661d7e910ba248b516cb475711580, type: 3}
-      propertyPath: m_Name
-      value: Dice_FIRE
-      objectReference: {fileID: 0}
-    - target: {fileID: 3333765030500886424, guid: d9e661d7e910ba248b516cb475711580, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d9e661d7e910ba248b516cb475711580, type: 3}
 --- !u!1 &214946825
 GameObject:
   m_ObjectHideFlags: 0
@@ -5949,7 +5888,7 @@ Transform:
   m_GameObject: {fileID: 1761939751}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1, y: -0.8, z: 0.011970041}
+  m_LocalPosition: {x: 4.1, y: -0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5995,7 +5934,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: f31c2b7e2431c2c47bb0c7f1091a99bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -6048,7 +5987,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -7471,4 +7410,3 @@ SceneRoots:
   - {fileID: 480566889}
   - {fileID: 2126310114}
   - {fileID: 356856413}
-  - {fileID: 210145913}

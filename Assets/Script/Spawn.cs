@@ -9,10 +9,10 @@ public class Spawn : MonoBehaviour
 
     [Header("Object")]
     [SerializeField] GameObject enemyPrefab;
+    [SerializeField] GameObject EndSpawn;
 
     [Header("Transform")]
     [SerializeField] Transform StartSpawn;
-    [SerializeField] Transform EndSpawn;
 
     [Header("Position")]
     [SerializeField] float spawnRate;               // 스폰주기
@@ -25,7 +25,7 @@ public class Spawn : MonoBehaviour
     {
         rateTime = spawnRate;
         StartSpawn = GetComponent<Transform>();
-        EndSpawn = GetComponent<Transform>();
+        EndSpawn = GetComponent<GameObject>();
     }
 
     void Update()
@@ -43,16 +43,7 @@ public class Spawn : MonoBehaviour
             newEnemy.transform.position = transform.position;
             //newEnemy.transform.position = position;
             rateTime = spawnRate;
-
+            
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Hole")
-        {
-            Destroy(enemyPrefab);
-        }
-    }
-
 }

@@ -8,7 +8,6 @@ using TMPro;
 
 public class Enemy : MonoBehaviour
 {
-   
     [SerializeField] GameObject enemy;
     [SerializeField] float speed;
     [SerializeField] float distance;
@@ -41,17 +40,19 @@ public class Enemy : MonoBehaviour
             //Debug.Log(rotationZ);
             //Debug.Log(enemy.transform.rotation.eulerAngles);
         }
-
-
-
     }
 
     void Update()
     {
-        
         enemy.transform.Translate(Vector2.up * speed * Time.deltaTime);
-
     }
 
-    
+    public void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.tag == "Hole")
+        {
+            Debug.Log("Ãæµ¹");
+            Destroy(enemy);
+        }
+    }
 }

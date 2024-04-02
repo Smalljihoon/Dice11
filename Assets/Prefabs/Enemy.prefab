@@ -201,7 +201,7 @@ Transform:
   m_GameObject: {fileID: 9212246679185868631}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.107066, y: -3.563074, z: -0.011970041}
+  m_LocalPosition: {x: -2.107066, y: -3.563074, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -330,7 +330,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!95 &2932508986349600062
 Animator:
@@ -368,3 +368,4 @@ MonoBehaviour:
   enemy: {fileID: 9212246679185868631}
   speed: 1
   distance: 0.3
+  Life: 0
