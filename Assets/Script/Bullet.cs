@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
+        // enable 하기전 총알 파괴 애니메이션
         // 타겟이 총알이 날아가는 도중에 파괴될시 바로 파괴 에니매이션 재생 
         if (target == null)
         {
@@ -29,11 +30,7 @@ public class Bullet : MonoBehaviour
         }
         //타겟 방향으로 이동 
         transform.Translate((target.position - transform.position).normalized * speed * Time.deltaTime);
-        // 에너미랑 부딫힐시 파괴 에니매이션 재생후 데미지 
-
-
-
-        //transform.Translate(* speed * Time.deltaTime);
+        // 에너미랑 부딪힐시 파괴 에니매이션 재생후 데미지 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
