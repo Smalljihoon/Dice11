@@ -92,6 +92,9 @@ public class Dice : MonoBehaviour
 
         foreach (var bullet in bullets)
         {
+            if (SpawnManager.instance.currentTarget == null)
+                continue;
+
             bullet.gameObject.SetActive(true);
 
             bullet.transform.localPosition = Vector3.zero;

@@ -6,12 +6,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public int life { get; set; }
-    public int score { get; set; }
-    public int sp { get; set; }
-
     // instance라는 변수를 static으로 선언을 하여 다른 오브젝트 안의 스크립트에서도 instance를 불러올 수 있게 합니다 
     public static GameManager instance = null;                          // 게임매니저 싱글톤
+    
+    public int score { get; set; }
+    public int sp { get; set; }
 
     private void Awake()
     {
@@ -27,22 +26,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Init(int life)
+    public void Init()
     {
-        this.life = life;
         score = 0;
         sp = 0;
     }
     private void Update()
     {
-        if (life <= 0)
-        {
-            //게임오버
-        }
-    }
-
-    private void gameOver()
-    {
-
+        
     }
 }

@@ -8,25 +8,24 @@ public class Spawn : MonoBehaviour
 {
     [Header("Object")]
     [SerializeField] GameObject enemyPrefab;
-    [SerializeField] GameObject EndSpawn;
+    //[SerializeField] GameObject EndSpawn;
 
     [Header("Transform")]
     [SerializeField] Transform StartSpawn;
 
-    [Header("Position")]
+    //[Header("Position")]
     //[SerializeField] float offsetRate;              // 스폰주기 차이
 
-    bool isSpawn;
+    //bool isSpawn;
 
     void Start()
     {
         StartSpawn = GetComponent<Transform>();
-        EndSpawn = GetComponent<GameObject>();
+        //EndSpawn = GetComponent<GameObject>();
     }
 
-    public Enemy SpawnEnemy()
+    public Enemy SpawnEnemy(int enemyID)
     {
-        {
             Transform transform = StartSpawn.transform;
             GameObject newEnemy = enemyPrefab;
             newEnemy = Instantiate(enemyPrefab);
@@ -38,10 +37,7 @@ public class Spawn : MonoBehaviour
             // 라운드 레벨에 따라서 
             // 라운드 레벨 같은거는 게임매니저가 가지고있을 가능성이 높음 
             // 몹 체력 조절 
-            enemy.Init(Random.Range(100, 300));
+            enemy.Init((SpawnManager.instance.Round - 1) * 100 + 200, enemyID);             // (라운드 - 1) * 100 + 200
             return enemy;
-        }
     }
-
-
 }

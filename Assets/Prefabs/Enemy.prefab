@@ -367,4 +367,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.5
   distance: 0.3
+  LifeImage:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   hp_text: {fileID: 5711763984424385227}
