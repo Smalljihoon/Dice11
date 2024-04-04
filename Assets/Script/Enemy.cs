@@ -12,22 +12,17 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float speed;                           // 적 이동속도
     [SerializeField] float distance;                        // ray 거리
-    [SerializeField] private TMP_Text hp_text;              // 적 체력
+    [SerializeField] TMP_Text hp_text;              // 적 체력
+    
     int hp = 0;                                             // 초기화한 체력변수
     int life = 3;                                           // 플레이어 체력(하트 3목숨)
-
-    //private Rigidbody2D rigid;
-    //private RaycastHit2D hit;
-    //private BoxCollider2D boxCollider;
 
     private Vector3[] directions = new Vector3[3];          // 몬스터가 방향을 바꿔야할 포인트 벡터배열
     private int count = 0;                                  // 배열값에 넣어줄 카운트 매개변수
     private int enemyID = 0;
-    
 
     private void Start()
     {
-        //rigid = GetComponent<Rigidbody2D>();
         directions[0] = transform.up;
         directions[1] = transform.right;
         directions[2] = transform.up * -1;  // down
@@ -38,6 +33,7 @@ public class Enemy : MonoBehaviour
         this.enemyID = enemyID;
         this.hp = hp;
         hp_text.text = hp.ToString();
+        
     }
 
     private void FixedUpdate()
@@ -52,9 +48,6 @@ public class Enemy : MonoBehaviour
         {
             count++;
             //Debug.Log(hit.collider.name);
-            //  transform.localEulerAngles = new Vector3(0, 0, rotationZ);
-            //Debug.Log(rotationZ);
-            //Debug.Log(enemy.transform.rotation.eulerAngles);
         }
     }
 
