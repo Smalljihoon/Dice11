@@ -10,19 +10,32 @@ using UnityEngine.UI;
 //데미지 표시는 여기서
 public class Enemy : MonoBehaviour
 {
+    //public enum TYPE
+    //{
+    //    NORMAL,
+    //    CRITICAL,
+    //}
+
     [SerializeField] float speed;                           // 적 이동속도
     [SerializeField] float distance;                        // ray 거리
     [SerializeField] TMP_Text hp_text;              // 적 체력
-    
+    [SerializeField] TMP_Text damage_text;                  // 데미지 텍스트
+    [SerializeField] float holdingTime;
+
     int hp = 0;                                             // 초기화한 체력변수
     int life = 3;                                           // 플레이어 체력(하트 3목숨)
 
     private Vector3[] directions = new Vector3[3];          // 몬스터가 방향을 바꿔야할 포인트 벡터배열
     private int count = 0;                                  // 배열값에 넣어줄 카운트 매개변수
     private int enemyID = 0;
+    public int remainDamage;
+
+    
+
 
     private void Start()
     {
+        damage_text = GetComponent<TMP_Text>();
         directions[0] = transform.up;
         directions[1] = transform.right;
         directions[2] = transform.up * -1;  // down
@@ -71,6 +84,7 @@ public class Enemy : MonoBehaviour
     {
         hp -= damage;
         hp_text.text = hp.ToString();
+        damage_text.text = damage.ToString();
 
         if (hp<= 0)
         {

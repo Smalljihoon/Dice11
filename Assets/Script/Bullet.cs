@@ -9,17 +9,16 @@ using UnityEngine.UIElements;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float speed;
-    [SerializeField] TMP_Text damage_text;                  // 데미지 텍스트
 
     private Transform target;
-    
     private int attackDamage = 0;       //공격력을 담을 매개변수
+
+    Vector2 originPos;                          // 데미지 생성 위치 ( 월드)
+    float time;
 
     private void Start()
     {
-        damage_text = GetComponent<TMP_Text>();
     }
-
 
     public void Init(int damage, Transform target)
     {
@@ -28,7 +27,6 @@ public class Bullet : MonoBehaviour
         attackDamage = damage;
         this.target = target;
 
-        damage_text.text = attackDamage.ToString();
     }
 
     void Update()
@@ -57,19 +55,18 @@ public class Bullet : MonoBehaviour
 
     }
 
-    private IEnumerator DamageMark()
-    {
-        // 데미지 텍스트 프리팹 컴포넌트 들고오기
-        // 컴포넌트 스케일, 포지션y, alpha 조절
-        Color color = damage_text.color;
-        
-        for(float i = 1.0f;i<=0.0f; i -= 0.1f)
-        {
-            color.a = (float)i;
-            damage_text.color = color;
-        }
+    //private IEnumerator DamageMark()
+    //{
+    //    // 데미지 텍스트 프리팹 컴포넌트 들고오기
+    //    // 컴포넌트 스케일, 포지션y, alpha 조절
 
-        yield return null;
-    }
+    //    for (float i = 1.0f;i<=0.0f; i -= 0.1f)
+    //    {
+    //        color.a = (float)i;
+    //        damage_text.color = color;
+    //    }
+
+    //    yield return null;
+    //}
 
 }
