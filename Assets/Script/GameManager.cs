@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.TextCore.Text;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +14,12 @@ public class GameManager : MonoBehaviour
     
     public int score { get; set; }
     public int sp { get; set; }
+
+    // 게임 내에서 sp를 2가지 표기
+    // 1번 남아있는 sp (적을 죽이면 +)
+    // 2번 필요 sp (소환 버튼을 누를시 필요 sp 증가)
+    [SerializeField] TextMeshPro needSP;
+    [SerializeField] TextMeshPro remainSP;
 
     private void Awake()
     {
@@ -24,6 +33,12 @@ public class GameManager : MonoBehaviour
             if (instance != this)                                       // instance가 내가 아니라면 이미 instance가 하나 존재하고 있다는 의미
                 Destroy(this.gameObject);                               // 둘 이상 존재하면 안되는 객체이니 방금 AWake된 자신을 삭제
         }
+    }
+
+    public void Start()
+    {
+        needSP = GetComponent<TextMeshPro>();
+        remainSP = GetComponent<TextMeshPro>();
     }
 
     public void Init()

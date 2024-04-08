@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,280 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_1
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 1148
+        width: 344
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28b3683b2e95efa46bc2c12cfa50be69
+      internalID: -215447175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_2
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 588
+        width: 1148
+        height: 552
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 828b255d33c65c24286ec49eb8672b93
+      internalID: 371556818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_3
+      rect:
+        serializedVersion: 2
+        x: 1292
+        y: 932
+        width: 44
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f36c796bb1fe9d4fa8e999ccf495c09
+      internalID: -28670156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_4
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 684
+        width: 372
+        height: 416
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a97840d0cafa5a438a31b3262e802b2
+      internalID: -1278553366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_5
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 843
+        width: 109
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c432b6251a3686e4ca2e7e0aeb17c636
+      internalID: 501727951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_6
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 848
+        width: 84
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb8878652da72c3428895088f000a0b0
+      internalID: -824141268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_7
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 579
+        width: 173
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e8e8a9f60a947540bf73c0c452ac2ff
+      internalID: -1868430778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_8
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 544
+        width: 288
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b002b8816baf8014e9352ea1dce545d3
+      internalID: -1106789774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_9
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 8
+        width: 1260
+        height: 552
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24ae51393fc6344499a46cd8d00ff5eb
+      internalID: -1401497327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_10
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 282
+        width: 181
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40131c2410b925241ae6f75a08dfcec4
+      internalID: -882700592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_11
+      rect:
+        serializedVersion: 2
+        x: 1514
+        y: 364
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97b673a4f281acd4da488be5fe143538
+      internalID: -1340579188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_12
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 0
+        width: 445
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b999ca0a6a2ceb947bb3c0932efa3198
+      internalID: -1844408440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_13
+      rect:
+        serializedVersion: 2
+        x: 1468
+        y: 276
+        width: 62
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e9f638be0b36b74fa8724e9843d52ce
+      internalID: -1824954479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +392,21 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_0: 579528046
+      sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_1: -215447175
+      sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_10: -882700592
+      sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_11: -1340579188
+      sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_12: -1844408440
+      sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_13: -1824954479
+      sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_2: 371556818
+      sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_3: -28670156
+      sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_4: -1278553366
+      sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_5: 501727951
+      sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_6: -824141268
+      sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_7: -1868430778
+      sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_8: -1106789774
+      sactx-0-2048x2048-ETC2-UI_InGameResult_Atlas-5cc7c274_9: -1401497327
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

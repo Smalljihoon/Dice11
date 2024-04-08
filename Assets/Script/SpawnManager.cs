@@ -14,16 +14,17 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] Spawn spawn;
     [SerializeField] float spawnRate;                   // 스폰주기
 
-    int life = 3;
 
     public Enemy currentTarget = null;                  // 현재 타겟 (queue의 첫번째)
     public int enemyCount = 30;                        // 라운드당 스폰 마릿수
-    private int genCount = 0;
     public int Round = 1;                               // 라운드
     public bool isDead;
+    public bool isClear = false;
+   
+    private int life = 3;
+    private int genCount = 0;
     float rateTime;                                     // 스폰주기
     float waitTime = 10;                                // 대기 시간
-    public bool isClear = false;
 
 
     private void Awake()
