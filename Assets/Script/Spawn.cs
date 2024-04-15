@@ -16,8 +16,6 @@ public class Spawn : MonoBehaviour
     //[Header("Position")]
     //[SerializeField] float offsetRate;              // 스폰주기 차이
 
-    //bool isSpawn;
-
     void Start()
     {
         StartSpawn = GetComponent<Transform>();

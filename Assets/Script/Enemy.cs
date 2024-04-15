@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     int hp = 0;                                             // 초기화한 체력변수
     int life = 3;                                           // 플레이어 체력(하트 3목숨)
 
-    private Vector3[] directions = new Vector3[3];          // 몬스터가 방향을 바꿔야할 포인트 벡터배열
+    public Vector3[] directions = new Vector3[3];          // 몬스터가 방향을 바꿔야할 포인트 벡터배열
     private int count = 0;                                  // 배열값에 넣어줄 카운트 매개변수
     private int enemyID = 0;
 
@@ -60,11 +60,11 @@ public class Enemy : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D col)            // trigger 감지
     {
-        if (col.tag == "Hole")                              // 충돌한게 Hole이면
+        if (col.tag == "Hole")                                     // 충돌한게 Hole이면
         {
-            Destroy(this.gameObject);                       // enemy 파괴
-            life--;                                         // 생명 -1
-            SpawnManager.instance.LifeDown();               // spawnmanager에서 관리하는 lifedown함수 싱글톤 불러오기
+            Destroy(this.gameObject);                         // enemy 파괴
+            life--;                                                          // 생명 -1
+            SpawnManager.instance.LifeDown();        // spawnmanager에서 관리하는 lifedown함수 싱글톤 불러오기
         }
     }
 
@@ -73,14 +73,14 @@ public class Enemy : MonoBehaviour
         hp -= damage;
         hp_text.text = hp.ToString();
 
-        GameObject dmgText = Instantiate(dmgTextPrefab);
+        GameObject dmgText = Instantiate(dmgTextPrefab, transform);
         dmgText.GetComponent<DamageText>().damage = damage;
         dmgText.transform.position = dmgPos.position;
 
-        if (hp<= 0)
+        if (hp <= 0)
         {
             Destroy(this.gameObject);
-            if(SpawnManager.instance.enemyCount-1 == enemyID)
+            if (SpawnManager.instance.enemyCount - 1 == enemyID)
             {
                 SpawnManager.instance.isClear = true;
             }

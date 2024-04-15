@@ -5,18 +5,19 @@ using UnityEngine;
 
 public class Dice : MonoBehaviour
 {
-    [SerializeField] private GameObject bullet;
+    [SerializeField] GameObject bullet;
 
     List<Bullet> bullets = new List<Bullet>();
 
     //공격력
-    [SerializeField] private int damage = 10;
+    [SerializeField]
+    protected int damage;
     //다이스 레벨
     public float level = 1;
 
     //공격속도
     //속성
-    private float rateTime = 1f;       // 
+    protected float rateTime = 1f;       // 
 
     private void Start()
     {
@@ -31,6 +32,10 @@ public class Dice : MonoBehaviour
         }
     }
 
+    public virtual void Skill()
+    {
+
+    }
     private void OnDestroy()
     {
         StopAllCoroutines();
@@ -42,7 +47,7 @@ public class Dice : MonoBehaviour
 
         bullets.Clear();
     }
-    private void Update()
+    protected virtual void Update()
     {
         rateTime -= Time.deltaTime;
         if (rateTime <= 0)
@@ -51,11 +56,7 @@ public class Dice : MonoBehaviour
             {
                 StopAllCoroutines();
                 StartCoroutine(Shot());
-                //var bulletGO = Instantiate(bullet, transform);
-                //var bulletItem = bulletGO.GetComponent<Bullet>();
-                //bulletGO.transform.localPosition = Vector3.zero;
 
-                //bulletItem.Init(damage, SpawnManager.instance.currentTarget.transform);
                 rateTime = 1f;
             }
         }
@@ -104,5 +105,4 @@ public class Dice : MonoBehaviour
             yield return new WaitForSeconds(delay);
         }
     }
-
 }

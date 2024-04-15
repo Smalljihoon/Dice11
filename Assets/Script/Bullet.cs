@@ -23,7 +23,6 @@ public class Bullet : MonoBehaviour
         // 공격력 초기화 
         attackDamage = damage;
         this.target = target;
-
     }
 
     void Update()
