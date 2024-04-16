@@ -1,34 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Dice : MonoBehaviour
+public enum Dice_category
 {
-    [SerializeField] GameObject bullet;
+    None = 0,
+    Growth,
+    Joker,
+    Snow,
+    Sun,
+    Iron
+}
 
-    List<Bullet> bullets = new List<Bullet>();
+public class Dice : MonoBehaviour//, IBeginDragHandler, IEndDragHandler, IDragHandler
+{
+    [SerializeField] GameObject bullet;                                     // 총알 오브젝트
 
-    //공격력
+   protected List<Bullet> bullets = new List<Bullet>();                          // bullets 리스트
+
     [SerializeField]
-    protected int damage;
-    //다이스 레벨
-    public float level = 1;
-
+    protected int damage;                           // 공격력
+    public float level = 1;                             // 다이스 눈금 레벨
     //공격속도
-    //속성
-    protected float rateTime = 1f;       // 
-
+    protected float rateTime = 1f;              // 발사 주기
+    protected Dice_category category;
+    
     private void Start()
     {
-        for (int i = 0; i < level; ++i)
+        for (int i = 0; i < level; ++i)                                                         // 다이스 눈금 갯수만큼 for문 돌아감
         {
-            var bulletGO = Instantiate(bullet, transform);
-            bulletGO.SetActive(false);
-            var bulletItem = bulletGO.GetComponent<Bullet>();
-            bulletGO.transform.localPosition = Vector3.zero;
+            GameObject bulletGO = Instantiate(bullet, transform);        // bullet을 dice의 위치에서 생성한 것을 bulletGameObject로 하겠다           
+            bulletGO.SetActive(false);                                                      // bulletGO를 보이지 않게 함 ( 발사 전이기때문 )
+            Bullet bulletItem = bulletGO.GetComponent<Bullet>();      // bulletGO에 달린 Bullet 스크립트를 불러오는걸 bulletItem이라고 정의
+            bulletGO.transform.localPosition = Vector3.zero;                // BulletGO의 로컬포지션을 월드포지션 (0,0,0)으로
 
-            bullets.Add(bulletItem);
+            bullets.Add(bulletItem);                                                        // 리스트 bullets에 bulletItem에 추가
         }
     }
 
@@ -36,30 +46,34 @@ public class Dice : MonoBehaviour
     {
 
     }
+
     private void OnDestroy()
     {
-        StopAllCoroutines();
+        StopAllCoroutines();                                    // 모든 코루틴 중지
 
         foreach (var bulletGO in bullets)
         {
-            Destroy(bulletGO.gameObject);
+            Destroy(bulletGO.gameObject);               // bullets에 담긴 총알 오브젝트 Destroy
         }
 
-        bullets.Clear();
+        bullets.Clear();                                              // bullets 청소~
     }
+
     protected virtual void Update()
     {
-        rateTime -= Time.deltaTime;
+        rateTime -= Time.deltaTime;                                             // 발사 주기에 따라 주사위 발사 속도가 달라짐
         if (rateTime <= 0)
         {
-            if (SpawnManager.instance.currentTarget != null)
+            if (SpawnManager.instance.currentTarget != null)        // 현재 타겟이 있으면
             {
-                StopAllCoroutines();
-                StartCoroutine(Shot());
+                StopAllCoroutines();                                                  // 모든 코루틴 중지
+                StartCoroutine(Shot());                                              // 발사 코루틴 시작
 
-                rateTime = 1f;
+                rateTime = 1f;                                                          // 현재 발사주기 1초로 해뒀기에 다시 1초로 초기화
             }
         }
+
+        
         // 공격딜레이마다 총알 생성및 총알 타겟 지정 
 
         // 공격 딜레이 = 코루틴으로 해결 (2성 3성 ... 눈금이 높아질수록...)
@@ -68,7 +82,7 @@ public class Dice : MonoBehaviour
 
     }
 
-    IEnumerator Shot()
+    protected virtual IEnumerator Shot()
     {
         while (true)
         {
@@ -105,4 +119,46 @@ public class Dice : MonoBehaviour
             yield return new WaitForSeconds(delay);
         }
     }
+
+    public Vector3 MousePos
+    {
+        get
+        {
+            var result = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            result.z = 0;
+            return result;
+        }
+    }
+
+    public void OnMouseDown()
+    {
+        
+    }
+
+    public void OnMouseDrag()
+    {
+        Debug.Log(MousePos);
+        transform.position = MousePos;
+    }
+
+    public void OnMouseUp()
+    {
+
+    }
+    //public void OnBeginDrag(PointerEventData eventData)
+    //{
+    //    defult_pos = this.transform.position;
+    //}
+
+    //public void OnEndDrag(PointerEventData eventData)
+    //{
+    //    Vector2 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //    this.transform.position = defult_pos;
+    //}
+
+    //public void OnDrag(PointerEventData eventData)
+    //{
+    //    Vector2 current_pos = eventData.position; 
+    //    this.transform.position= current_pos;
+    //}
 }

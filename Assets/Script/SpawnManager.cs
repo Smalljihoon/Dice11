@@ -14,7 +14,6 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] Spawn spawn;
     [SerializeField] float spawnRate;                   // 스폰주기
 
-
     public Enemy currentTarget = null;                  // 현재 타겟 (queue의 첫번째)
     public int enemyCount = 30;                        // 라운드당 스폰 마릿수
     public int Round = 1;                               // 라운드
@@ -24,7 +23,7 @@ public class SpawnManager : MonoBehaviour
     private int life = 3;
     private int genCount = 0;
     float rateTime;                                     // 스폰주기
-    float waitTime = 10;                                // 대기 시간
+    float waitTime = 10;                            // 대기 시간
 
 
     private void Awake()

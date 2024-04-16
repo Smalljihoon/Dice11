@@ -44,8 +44,7 @@ public class DiceSpawner : MonoBehaviour
     }
     public void RandomPick(int n)
     {
-        // slot이 null이면 소환
-        if (slots[n].childCount == 0)
+        if (slots[n].childCount == 0)                                                   // slot이 null이면 소환
         {
             var temp = dice[Random.Range(0, dice.Length)];
             var diceGO = Instantiate(temp, slots[n]);
@@ -53,8 +52,7 @@ public class DiceSpawner : MonoBehaviour
 
             //dices[0].Skill();
         }
-        // slot이 null이 아니면 재귀호출
-        else
+        else                                                                                        // slot이 null이 아니면 재귀호출
         {
             int a = Random.Range(0, slots.Length);
             RandomPick(a);
