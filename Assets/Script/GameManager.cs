@@ -46,6 +46,33 @@ public class GameManager : MonoBehaviour
         score = 0;
         sp = 0;
     }
+
+    public Vector3 MousePos
+    {
+        get
+        {
+            var result = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            result.z = 0;
+            return result;
+        }
+    }
+
+    public void OnMouseDown()
+    {
+        print("µå·¡±×");
+
+    }
+
+    public void OnMouseDrag()
+    {
+        transform.position = MousePos;
+    }
+
+    public void OnMouseUp()
+    {
+        
+    }
+
     private void Update()
     {
         
