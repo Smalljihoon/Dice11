@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class IronDice : Dice
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
+
+        category = Dice_category.Iron;
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

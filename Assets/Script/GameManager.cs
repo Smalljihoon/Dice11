@@ -47,34 +47,32 @@ public class GameManager : MonoBehaviour
         sp = 0;
     }
 
-    public Vector3 MousePos
-    {
-        get
-        {
-            var result = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            result.z = 0;
-            return result;
-        }
-    }
-
-    public void OnMouseDown()
-    {
-        print("µå·¡±×");
-
-    }
-
-    public void OnMouseDrag()
-    {
-        transform.position = MousePos;
-    }
-
-    public void OnMouseUp()
-    {
-        
-    }
-
-    private void Update()
-    {
-        
-    }
+    
 }
+//public Vector3 MousePos
+//{
+//    get
+//    {
+//        var result = Camera.main.WorldToScreenPoint(Input.mousePosition);
+//        result.z = 0;
+//        return result;
+//    }
+//}
+//public void OnMouseDown()
+//{
+
+
+//}
+
+//public void OnMouseDrag()
+//{
+//    //Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
+//    //Vector3 objPos = Camera.main.ScreenToWorldPoint(mousePos);
+//    //transform.position = objPos;
+//    transform.position = MousePos;
+//}
+
+//public void OnMouseUp()
+//{
+
+//}

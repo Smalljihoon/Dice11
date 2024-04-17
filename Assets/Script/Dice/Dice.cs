@@ -20,25 +20,25 @@ public class Dice : MonoBehaviour
 {
     [SerializeField] GameObject bullet;                              // 총알 오브젝트
 
-   protected List<Bullet> bullets = new List<Bullet>();              // bullets 리스트
+    protected List<Bullet> bullets = new List<Bullet>();              // bullets 리스트
 
     [SerializeField]
     protected int damage;                                           // 공격력
     public float level = 1;                                         // 다이스 눈금 레벨
     //공격속도
     protected float rateTime = 1f;                                  // 발사 주기
-    protected Dice_category category;
-    
-    private void Start()
+    public Dice_category category;
+
+    protected virtual void Start()
     {
-        for (int i = 0; i < level; ++i)                                  // 다이스 눈금 갯수만큼 for문 돌아감
+        for (int i = 0; i < level; ++i)                                                          // 다이스 눈금 갯수만큼 for문 돌아감
         {
             GameObject bulletGO = Instantiate(bullet, transform);        // bullet을 dice의 위치에서 생성한 것을 bulletGameObject로 하겠다           
-            bulletGO.SetActive(false);                                   // bulletGO를 보이지 않게 함 ( 발사 전이기때문 )
+            bulletGO.SetActive(false);                                                       // bulletGO를 보이지 않게 함 ( 발사 전이기때문 )
             Bullet bulletItem = bulletGO.GetComponent<Bullet>();         // bulletGO에 달린 Bullet 스크립트를 불러오는걸 bulletItem이라고 정의
-            bulletGO.transform.localPosition = Vector3.zero;             // BulletGO의 로컬포지션을 월드포지션 (0,0,0)으로
+            bulletGO.transform.localPosition = Vector3.zero;                // BulletGO의 로컬포지션을 월드포지션 (0,0,0)으로
 
-            bullets.Add(bulletItem);                                     // 리스트 bullets에 bulletItem에 추가
+            bullets.Add(bulletItem);                                                        // 리스트 bullets에 bulletItem에 추가
         }
     }
 
@@ -73,7 +73,7 @@ public class Dice : MonoBehaviour
             }
         }
 
-        
+
         // 공격딜레이마다 총알 생성및 총알 타겟 지정 
 
         // 공격 딜레이 = 코루틴으로 해결 (2성 3성 ... 눈금이 높아질수록...)
