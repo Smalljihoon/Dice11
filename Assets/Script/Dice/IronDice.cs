@@ -11,9 +11,10 @@ public class IronDice : Dice
         category = Dice_category.Iron;
 
     }
-
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
 
     }
 }

@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class GrowthDice : Dice
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
+
+        category = Dice_category.Growth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -1,51 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class FusionManager : MonoBehaviour
 {
     Vector3 offset;
-    public string SlotTag = "Slot";
     public LayerMask layer;
 
+    private Dice selectDice = null;
+    Transform hittOB = null;
+    Dice getdice;
 
-    //[SerializeField] Camera camera;
+    [SerializeField] GameObject[] dice;
 
-    private void Start()
-    {
-        //camera = GetComponent<Camera>();
-    }
 
     Vector3 MouseWorldPosition()
     {
         var mouseScreenPos = Input.mousePosition;
-        mouseScreenPos.z = Camera.main.WorldToScreenPoint(transform.position).z;
+
         return Camera.main.ScreenToWorldPoint(mouseScreenPos);
     }
 
     private void Update()
     {
+        // 마우스 좌클릭 했을때
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 MousePosition;
+            RaycastHit2D hitt = Physics2D.Raycast(MouseWorldPosition(), Camera.main.transform.forward, Mathf.Infinity, layer);
 
-            MousePosition = Input.mousePosition;
-            MousePosition = Camera.main.ScreenToWorldPoint(MousePosition);
-
-            RaycastHit2D hitt = Physics2D.Raycast(MousePosition, Vector2.zero);
-            Debug.DrawRay(MousePosition, transform.forward * 10, Color.red, 0.3f);
-            if (hitt.collider != null)
+            if (hitt.transform != null)
             {
-                    var FirstTarget = hitt.collider.GetComponent<Dice>();
-                    //var target = FirstTarget.category;
-                    hitt.transform.GetComponent<SpriteRenderer>().color = Color.gray;
-
-                offset = transform.position - MouseWorldPosition();
+                if (hitt.transform.childCount > 0)
+                {
+                    hittOB = hitt.transform;
+                    selectDice = hitt.transform.GetChild(0).GetComponent<Dice>();
+                    offset = selectDice.transform.position - MouseWorldPosition();
+                }
             }
+        }
+
+        // 좌클릭 했을때의 슬롯에 주사위가 있으면
+        if (selectDice != null)
+        {
             if (Input.GetMouseButton(0))
             {
-                transform.position = MouseWorldPosition() + offset;
+                selectDice.transform.position = MouseWorldPosition() + offset;
             }
+
             if (Input.GetMouseButtonUp(0))
             {
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -59,78 +61,48 @@ public class FusionManager : MonoBehaviour
                     {
                         Dice hitdice = hitOB.GetChild(0).GetComponent<Dice>();
 
-                        //if (hitdice.category == )
-                        //{
-                        //    Debug.Log("����");
-                        //}
-                        //else
-                        //{
-                        //    transform.localPosition = Vector3.zero;
-                        //}
+                        if (hitdice.category == selectDice.category)
+                        {
+                            if (hitdice.eyes == selectDice.eyes)
+                            {
+                                if (hitdice.Equals(selectDice))
+                                {
+                                    selectDice.transform.localPosition = Vector3.zero;
+                                }
+                                else
+                                {
+                                    Debug.Log("조합");
+                                    //int result_lv = selectDice.level;
+                                    Destroy(hitOB.GetChild(0).gameObject);
+                                    Destroy(hittOB.GetChild(0).gameObject);
+
+                                    var temp = dice[Random.Range(0, dice.Length)];
+                                    var diceGO = Instantiate(temp, hitOB);
+                                    var newDice = diceGO.GetComponent<Dice>();
+                                    
+                                    newDice.eyes++;
+                                    newDice.SetDiceEye();
+                                    // 새주사위 뽑아서 
+                                    getdice.eyes = newDice.eyes;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            selectDice.transform.localPosition = Vector3.zero;
+                        }
                     }
                     else
                     {
-                        if (hit.transform.tag == SlotTag)
-                        {
-                            this.transform.parent = hit.transform;
-                            transform.localPosition = Vector3.zero;
-                        }
+                        selectDice.transform.localPosition = Vector3.zero;
                     }
                 }
                 else
                 {
-                    transform.localPosition = Vector3.zero;
+                    selectDice.transform.localPosition = Vector3.zero;
                 }
-
-
-                Physics.SyncTransforms();
+                selectDice = null;
             }
         }
     }
 }
-
-//Vector3 offset;
-//public string SlotTag = "Slot";
-
-//public LayerMask layer;
-//Vector3 MouseWorldPosition()
-//{
-//    var mouseScreenPos = Input.mousePosition;
-//    mouseScreenPos.z = Camera.main.WorldToScreenPoint(transform.position).z;
-//    return Camera.main.ScreenToWorldPoint(mouseScreenPos);
-//}
-//private void OnMouseDown()
-//{
-//    offset = transform.position - MouseWorldPosition();
-//    transform.GetComponent<BoxCollider2D>().enabled = false;
-//}
-
-//private void OnMouseDrag()
-//{
-//    transform.position = MouseWorldPosition() + offset;
-//}
-
-//private void OnMouseUp()
-//{
-//    //var rayOrigin = Camera.main.transform.position;
-//    //var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
-//    var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-//    RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity,layer);
-//    GameObject hitOB = hit.transform.gameObject;
-//    Dice hitdice = hitOB.GetComponent<Dice>();
-
-//    if (hitdice != null)
-//    {
-//        if (hit.transform.tag == SlotTag)
-//        {
-//            if (hitdice.category == this.category)
-//            {
-//                transform.position = hit.transform.position;
-//                this.transform.parent = hit.transform;
-
-//            }
-//        }
-//    }
-//    transform.GetComponent<BoxCollider2D>().enabled = true;
-//}

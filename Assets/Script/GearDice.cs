@@ -5,21 +5,23 @@ using UnityEngine;
 
 public class GearDice : Dice
 {
-    //void Start()
-    //{
-    //    category = Dice_category.Growth;
-    //}
+    protected override void Start()
+    {
+        base.Start();
 
-    //void Update()
-    //{
-        
-    //}
+        category = Dice_category.Growth;
+    }
 
-    //void Upgrade()
-    //{
-    //    if(Dice_category.Joker == category)
-    //    {
-    //        // 합체 로직
-    //    }
-    //}
+    void Update()
+    {
+
+    }
+
+    void Upgrade()
+    {
+        if (Dice_category.Joker == category)
+        {
+            // 합체 로직
+        }
+    }
 }

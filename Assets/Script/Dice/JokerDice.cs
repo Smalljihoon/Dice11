@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class JokerDice : Dice
 {
-
-    public override void Skill()
+    protected override void Start()
     {
+        base.Start();
 
+        category = Dice_category.Joker;
     }
+
+
+
 }

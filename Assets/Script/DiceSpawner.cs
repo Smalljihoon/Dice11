@@ -11,7 +11,7 @@ public class DiceSpawner : MonoBehaviour
 
     [SerializeField] Transform[] slots = null;
 
-    List<Dice> dices = new List<Dice>();
+    //List<Dice> dices = new List<Dice>();
     //게임 오브젝트로 사용하기 코드 :
     //GameObject obj = Instantiate(Resources.Load("/경로/프리팹이름")) as GameObject;
 
@@ -48,7 +48,7 @@ public class DiceSpawner : MonoBehaviour
         {
             var temp = dice[Random.Range(0, dice.Length)];
             var diceGO = Instantiate(temp, slots[n]);
-            dices.Add(diceGO.GetComponent<Dice>());
+            //dices.Add(diceGO.GetComponent<Dice>());
 
             //dices[0].Skill();
         }

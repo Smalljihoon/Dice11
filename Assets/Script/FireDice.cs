@@ -4,46 +4,52 @@ using UnityEngine;
 
 public class FireDice : Dice
 {
-    public override void Skill()
+    protected override void Start()
     {
+        base.Start();
 
+        category = Dice_category.Fire;
     }
+    //public override void Skill()
+    //{
 
-    protected override IEnumerator Shot()
-    {
-        while (true)
-        {
-            List<GameObject> list = new List<GameObject>();
+    //}
 
-            foreach (var bullet in bullets)
-            {
-                if (!bullet.gameObject.activeSelf)
-                {
-                    list.Add(bullet.gameObject);
-                }
-            }
-            yield return null;
+    //protected override IEnumerator Shot()
+    //{
+    //    while (true)
+    //    {
+    //        List<GameObject> list = new List<GameObject>();
 
-            if (list.Count == bullets.Count)
-            {
-                break;
-            }
-        }
+    //        foreach (var bullet in bullets)
+    //        {
+    //            if (!bullet.gameObject.activeSelf)
+    //            {
+    //                list.Add(bullet.gameObject);
+    //            }
+    //        }
+    //        yield return null;
 
-        float delay = 0.8f / level;
+    //        if (list.Count == bullets.Count)
+    //        {
+    //            break;
+    //        }
+    //    }
 
-        foreach (var bullet in bullets)
-        {
-            if (SpawnManager.instance.currentTarget == null)
-                continue;
+    //    float delay = 0.8f / eyes;
 
-            bullet.gameObject.SetActive(true);
+    //    foreach (var bullet in bullets)
+    //    {
+    //        if (SpawnManager.instance.currentTarget == null)
+    //            continue;
 
-            bullet.transform.localPosition = Vector3.zero;
+    //        bullet.gameObject.SetActive(true);
 
-            bullet.Init(damage, SpawnManager.instance.currentTarget.transform);
+    //        bullet.transform.localPosition = Vector3.zero;
 
-            yield return new WaitForSeconds(delay);
-        }
-    }
+    //        bullet.Init(damage, SpawnManager.instance.currentTarget.transform);
+
+    //        yield return new WaitForSeconds(delay);
+    //    }
+    //}
 }

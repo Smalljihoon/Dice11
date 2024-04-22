@@ -13,32 +13,34 @@ public enum Dice_category
     Joker,
     Snow,
     Sun,
-    Iron
+    Iron,
+    Fire,
 }
 
 public class Dice : MonoBehaviour
 {
-    [SerializeField] GameObject bullet;                              // ÃÑ¾Ë ¿ÀºêÁ§Æ®
+    [SerializeField] GameObject bullet;                              // ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 
-    protected List<Bullet> bullets = new List<Bullet>();              // bullets ¸®½ºÆ®
+    protected List<Bullet> bullets = new List<Bullet>();              // bullets ï¿½ï¿½ï¿½ï¿½Æ®
 
     [SerializeField]
-    protected int damage;                                           // °ø°Ý·Â
-    public float level = 1;                                         // ´ÙÀÌ½º ´«±Ý ·¹º§
-    //°ø°Ý¼Óµµ
-    protected float rateTime = 1f;                                  // ¹ß»ç ÁÖ±â
+    protected int damage;                                         // ï¿½ï¿½ï¿½Ý·ï¿½
+    public int level = 0;                                        // inï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­ ï¿½ï¿½Ä¡ ï¿½Ö´ï¿½ (7ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+    //ï¿½ï¿½ï¿½Ý¼Óµï¿½
+    protected float rateTime = 1f;                                  // ï¿½ß»ï¿½ ï¿½Ö±ï¿½
     public Dice_category category;
+    public int  eyes = 1;                                         // ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     protected virtual void Start()
     {
-        for (int i = 0; i < level; ++i)                                                          // ´ÙÀÌ½º ´«±Ý °¹¼ö¸¸Å­ for¹® µ¹¾Æ°¨
+        for (int i = 0; i < eyes; ++i)                                                          // ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å­ forï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½
         {
-            GameObject bulletGO = Instantiate(bullet, transform);        // bulletÀ» diceÀÇ À§Ä¡¿¡¼­ »ý¼ºÇÑ °ÍÀ» bulletGameObject·Î ÇÏ°Ú´Ù           
-            bulletGO.SetActive(false);                                                       // bulletGO¸¦ º¸ÀÌÁö ¾Ê°Ô ÇÔ ( ¹ß»ç ÀüÀÌ±â¶§¹® )
-            Bullet bulletItem = bulletGO.GetComponent<Bullet>();         // bulletGO¿¡ ´Þ¸° Bullet ½ºÅ©¸³Æ®¸¦ ºÒ·¯¿À´Â°É bulletItemÀÌ¶ó°í Á¤ÀÇ
-            bulletGO.transform.localPosition = Vector3.zero;                // BulletGOÀÇ ·ÎÄÃÆ÷Áö¼ÇÀ» ¿ùµåÆ÷Áö¼Ç (0,0,0)À¸·Î
+            GameObject bulletGO = Instantiate(bullet, transform);        // bulletï¿½ï¿½ diceï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ bulletGameObjectï¿½ï¿½ ï¿½Ï°Ú´ï¿½           
+            bulletGO.SetActive(false);                                                       // bulletGOï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ ï¿½ï¿½ ( ï¿½ß»ï¿½ ï¿½ï¿½ï¿½Ì±â¶§ï¿½ï¿½ )
+            Bullet bulletItem = bulletGO.GetComponent<Bullet>();         // bulletGOï¿½ï¿½ ï¿½Þ¸ï¿½ Bullet ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½Â°ï¿½ bulletItemï¿½Ì¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            bulletGO.transform.localPosition = Vector3.zero;                // BulletGOï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (0,0,0)ï¿½ï¿½ï¿½ï¿½
 
-            bullets.Add(bulletItem);                                                        // ¸®½ºÆ® bullets¿¡ bulletItem¿¡ Ãß°¡
+            bullets.Add(bulletItem);                                                        // ï¿½ï¿½ï¿½ï¿½Æ® bulletsï¿½ï¿½ bulletItemï¿½ï¿½ ï¿½ß°ï¿½
         }
     }
 
@@ -49,37 +51,68 @@ public class Dice : MonoBehaviour
 
     private void OnDestroy()
     {
-        StopAllCoroutines();                            // ¸ðµç ÄÚ·çÆ¾ ÁßÁö
+        StopAllCoroutines();                            // ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½
 
         foreach (var bulletGO in bullets)
         {
-            Destroy(bulletGO.gameObject);               // bullets¿¡ ´ã±ä ÃÑ¾Ë ¿ÀºêÁ§Æ® Destroy
+            Destroy(bulletGO.gameObject);               // bulletsï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® Destroy
         }
 
-        bullets.Clear();                                // bullets Ã»¼Ò~
+        bullets.Clear();                                // bullets Ã»ï¿½ï¿½~
     }
 
     protected virtual void Update()
     {
-        rateTime -= Time.deltaTime;                                 // ¹ß»ç ÁÖ±â¿¡ µû¶ó ÁÖ»çÀ§ ¹ß»ç ¼Óµµ°¡ ´Þ¶óÁü
+        rateTime -= Time.deltaTime;                                 // ï¿½ß»ï¿½ ï¿½Ö±â¿¡ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö»ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½Þ¶ï¿½ï¿½ï¿½
         if (rateTime <= 0)
         {
-            if (SpawnManager.instance.currentTarget != null)        // ÇöÀç Å¸°ÙÀÌ ÀÖÀ¸¸é
+            if (SpawnManager.instance.currentTarget != null)        // ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             {
-                StopAllCoroutines();                                // ¸ðµç ÄÚ·çÆ¾ ÁßÁö
-                StartCoroutine(Shot());                             // ¹ß»ç ÄÚ·çÆ¾ ½ÃÀÛ
+                StopAllCoroutines();                                // ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½
+                StartCoroutine(Shot());                             // ï¿½ß»ï¿½ ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½
 
-                rateTime = 1f;                                      // ÇöÀç ¹ß»çÁÖ±â 1ÃÊ·Î ÇØµ×±â¿¡ ´Ù½Ã 1ÃÊ·Î ÃÊ±âÈ­
+                rateTime = 1f;                                      // ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½Ö±ï¿½ 1ï¿½Ê·ï¿½ ï¿½Øµ×±â¿¡ ï¿½Ù½ï¿½ 1ï¿½Ê·ï¿½ ï¿½Ê±ï¿½È­
             }
         }
+        // ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = ï¿½Ú·ï¿½Æ¾ï¿½ï¿½ï¿½ï¿½ ï¿½Ø°ï¿½ (2ï¿½ï¿½ 3ï¿½ï¿½ ... ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...)
 
-        // °ø°Ýµô·¹ÀÌ¸¶´Ù ÃÑ¾Ë »ý¼º¹× ÃÑ¾Ë Å¸°Ù ÁöÁ¤ 
+        // ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½  ï¿½Î½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    }
 
-        // °ø°Ý µô·¹ÀÌ = ÄÚ·çÆ¾À¸·Î ÇØ°á (2¼º 3¼º ... ´«±ÝÀÌ ³ô¾ÆÁú¼ö·Ï...)
+    public void SetDiceEye()
+    {
+        int child_count = this.transform.childCount;
+        for(int i = 0; i< child_count; ++i)
+        {
+            this.transform.GetChild(i).gameObject.SetActive(false);
+        }
 
-        // ´ÙÀÌ½º »ý¼ºÇÒ ¶§  ÀÎ½ºÅÏÆ¼¿¡ÀÌÆ® ÇØ¼­ µû·Î ÀúÀå
-
+        if(this.eyes == 2)
+        {
+            this.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else if(this.eyes == 3)
+        {
+            this.transform.GetChild(2).gameObject.SetActive(true);
+        }
+        else if(this.eyes == 4)
+        {
+            this.transform.GetChild(3).gameObject.SetActive(true);
+        }
+        else if (this.eyes == 5)
+        {
+            this.transform.GetChild(4).gameObject.SetActive(true);
+        }
+        else if (this.eyes == 6)
+        {
+            this.transform.GetChild(5).gameObject.SetActive(true);
+        }
+        else if (this.eyes == 7)
+        {
+            this.transform.GetChild(6).gameObject.SetActive(true);
+        }
     }
 
     protected virtual IEnumerator Shot()
@@ -103,7 +136,7 @@ public class Dice : MonoBehaviour
             }
         }
 
-        float delay = 0.8f / level;
+        float delay = 0.8f / eyes;
 
         foreach (var bullet in bullets)
         {
