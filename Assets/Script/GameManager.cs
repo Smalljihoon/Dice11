@@ -6,6 +6,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using static System.Net.Mime.MediaTypeNames;
+using static UnityEngine.Rendering.DebugUI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,13 +14,12 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;                          // 게임매니저 싱글톤
     
     public int score { get; set; }
-    public int sp { get; set; }
 
-    // 게임 내에서 sp를 2가지 표기
-    // 1번 남아있는 sp (적을 죽이면 +)
-    // 2번 필요 sp (소환 버튼을 누를시 필요 sp 증가)
-    [SerializeField] TextMeshPro needSP;
-    [SerializeField] TextMeshPro remainSP;
+    [SerializeField] TMP_Text needSP;           // 소환할 때 필요한 sp
+    [SerializeField] TMP_Text remainSP;         // 내가 가지고 있는 sp
+
+    public int reamain = 100;
+    public int need = 10;
 
     private void Awake()
     {
@@ -37,42 +37,35 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        needSP = GetComponent<TextMeshPro>();
-        remainSP = GetComponent<TextMeshPro>();
+        
     }
 
-    public void Init()
+    public void Update()
     {
-        score = 0;
-        sp = 0;
+        needSP.text = need.ToString();
+        remainSP.text = reamain.ToString();
+        
+        
+
     }
 
-    
+    public void Init(int Plus, int Minus)
+    {
+        reamain = Plus;
+        need = Minus;
+    }
+
+    public void SetRemain(int value)
+    {
+        reamain -= value;
+    }
+
+    public void SetNeedSP(int value)
+    {
+        need += value;
+    }
+
+    // 몬스터를 죽이면 + 10 SP  -- 라운드 올라갈때마다 얻는 sp+10
+    // 주사위를 소환할 때마다 필요수치가 10씩 늘어남
+
 }
-//public Vector3 MousePos
-//{
-//    get
-//    {
-//        var result = Camera.main.WorldToScreenPoint(Input.mousePosition);
-//        result.z = 0;
-//        return result;
-//    }
-//}
-//public void OnMouseDown()
-//{
-
-
-//}
-
-//public void OnMouseDrag()
-//{
-//    //Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
-//    //Vector3 objPos = Camera.main.ScreenToWorldPoint(mousePos);
-//    //transform.position = objPos;
-//    transform.position = MousePos;
-//}
-
-//public void OnMouseUp()
-//{
-
-//}

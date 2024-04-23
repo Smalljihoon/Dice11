@@ -15,24 +15,24 @@ public class Enemy : MonoBehaviour
     //    CRITICAL,
     //}
 
-    [SerializeField] float speed;                                       // 적 이동속도
-    [SerializeField] float distance;                                   // ray 거리
-    [SerializeField] TMP_Text hp_text;                            // 적 체력
+    [SerializeField] float speed;                           // 적 이동속도
+    [SerializeField] float distance;                        // ray 거리
+    [SerializeField] TMP_Text hp_text;                      // 적 체력
     public GameObject dmgTextPrefab;                        // 데미지 프리팹
-    public Transform dmgPos;                                       // 데미지 생성할 위치
+    public Transform dmgPos;                                // 데미지 생성할 위치
 
-    int hp = 0;                                                                 // 초기화한 체력변수
-    int life = 3;                                                               // 플레이어 체력(하트 3목숨)
+    int hp = 0;                                             // 초기화한 체력변수
+    int life = 3;                                           // 플레이어 체력(하트 3목숨)
 
-    public Vector3[] directions = new Vector3[3];          // 몬스터가 방향을 바꿔야할 포인트 벡터배열
-    private int count = 0;                                              // 배열값에 넣어줄 카운트 매개변수
+    public Vector3[] directions = new Vector3[3];           // 몬스터가 방향을 바꿔야할 포인트 벡터배열
+    private int count = 0;                                  // 배열값에 넣어줄 카운트 매개변수
     private int enemyID = 0;
 
     private void Start()
     {
         directions[0] = transform.up;
         directions[1] = transform.right;
-        directions[2] = transform.up * -1;  // down
+        directions[2] = transform.up * -1;          // down
     }
 
     public void Init(int hp, int enemyID)           // hp, enemy순서 번호ID 초기화 함수
@@ -60,11 +60,11 @@ public class Enemy : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D col)            // trigger 감지
     {
-        if (col.tag == "Hole")                                     // 충돌한게 Hole이면
+        if (col.tag == "Hole")                              // 충돌한게 Hole이면
         {
-            Destroy(this.gameObject);                         // enemy 파괴
-            life--;                                                          // 생명 -1
-            SpawnManager.instance.LifeDown();        // spawnmanager에서 관리하는 lifedown함수 싱글톤 불러오기
+            Destroy(this.gameObject);                       // enemy 파괴
+            life--;                                         // 생명 -1
+            SpawnManager.instance.LifeDown();               // spawnmanager에서 관리하는 lifedown함수 싱글톤 불러오기
         }
     }
 
@@ -80,6 +80,7 @@ public class Enemy : MonoBehaviour
         if (hp <= 0)
         {
             Destroy(this.gameObject);
+            GameManager.instance.SetRemain(-SpawnManager.instance.Round * 10);
             if (SpawnManager.instance.enemyCount - 1 == enemyID)
             {
                 SpawnManager.instance.isClear = true;

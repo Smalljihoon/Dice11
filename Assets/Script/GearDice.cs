@@ -12,10 +12,7 @@ public class GearDice : Dice
         category = Dice_category.Growth;
     }
 
-    void Update()
-    {
-
-    }
+    
 
     void Upgrade()
     {

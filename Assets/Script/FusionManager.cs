@@ -10,7 +10,7 @@ public class FusionManager : MonoBehaviour
 
     private Dice selectDice = null;
     Transform hittOB = null;
-    Dice getdice;
+    Dice gotdice;
 
     [SerializeField] GameObject[] dice;
 
@@ -71,19 +71,21 @@ public class FusionManager : MonoBehaviour
                                 }
                                 else
                                 {
+                                    int remain = hitdice.eyes;
+                                    remain++;
                                     Debug.Log("조합");
-                                    //int result_lv = selectDice.level;
                                     Destroy(hitOB.GetChild(0).gameObject);
                                     Destroy(hittOB.GetChild(0).gameObject);
 
                                     var temp = dice[Random.Range(0, dice.Length)];
                                     var diceGO = Instantiate(temp, hitOB);
                                     var newDice = diceGO.GetComponent<Dice>();
-                                    
-                                    newDice.eyes++;
+                                    newDice.eyes = remain;
                                     newDice.SetDiceEye();
-                                    // 새주사위 뽑아서 
-                                    getdice.eyes = newDice.eyes;
+                                    
+                                    Debug.Log(newDice.eyes);
+
+
                                 }
                             }
                         }

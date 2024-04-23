@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class DiceSpawner : MonoBehaviour
 
     [SerializeField] Transform[] slots = null;
 
+    public int usePlus = 10;    // 소환시 필요 sp 가중치
     //List<Dice> dices = new List<Dice>();
     //게임 오브젝트로 사용하기 코드 :
     //GameObject obj = Instantiate(Resources.Load("/경로/프리팹이름")) as GameObject;
@@ -22,24 +24,35 @@ public class DiceSpawner : MonoBehaviour
 
     public void DiceSummon()
     {
-        bool isEmptySlot = false;
-        foreach (Transform slot in slots)
+        if (GameManager.instance.reamain >= GameManager.instance.need)
         {
-            if (slot.childCount == 0)
-            {
-                isEmptySlot = true;
-                break;
-            }
-        }
 
-        if (isEmptySlot)
-        {
-            int a = Random.Range(0, slots.Length);
-            RandomPick(a);
+            bool isEmptySlot = false;
+            foreach (Transform slot in slots)
+            {
+                if (slot.childCount == 0)
+                {
+                    isEmptySlot = true;
+                    break;
+                }
+            }
+
+            if (isEmptySlot)
+            {
+                int a = Random.Range(0, slots.Length);
+                RandomPick(a);
+                GameManager.instance.SetRemain(GameManager.instance.need);
+                GameManager.instance.SetNeedSP(usePlus);
+            }
+            else
+            {
+                Debug.Log("꽉참");
+            }
         }
         else
         {
-            Debug.Log("꽉참");
+            Debug.Log("주사위를 소환시키기에 sp가 부족합니다.");
+            return;
         }
     }
     public void RandomPick(int n)

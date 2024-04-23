@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 77602996}
   - component: {fileID: 77602995}
   m_Layer: 5
-  m_Name: needSP
+  m_Name: needSP_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4487,6 +4487,7 @@ MonoBehaviour:
   - {fileID: 893883299}
   - {fileID: 1623723092}
   - {fileID: 224002858}
+  usePlus: 10
 --- !u!4 &1160599297
 Transform:
   m_ObjectHideFlags: 0
@@ -7978,8 +7979,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778d2e4097add4947889a620db7a1d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  needSP: {fileID: 0}
-  remainSP: {fileID: 0}
+  needSP: {fileID: 77602995}
+  remainSP: {fileID: 1695183462}
+  reamain: 100
+  need: 10
 --- !u!4 &2034105931
 Transform:
   m_ObjectHideFlags: 0
