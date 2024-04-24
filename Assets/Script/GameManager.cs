@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
         remainSP.text = reamain.ToString();
         
         
-
     }
 
     public void Init(int Plus, int Minus)

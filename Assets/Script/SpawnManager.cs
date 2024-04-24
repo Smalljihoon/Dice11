@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -13,6 +13,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] Image[] LifeImage;                 // 빨간 하트 이미지
     [SerializeField] Spawn spawn;
     [SerializeField] float spawnRate;                   // 스폰주기
+    [SerializeField] TMP_Text roundtext;                // 라운드 tmp text
+    [SerializeField] GameObject Alarm;                  //
 
     public Enemy currentTarget = null;                  // 현재 타겟 (queue의 첫번째)
     public int enemyCount = 30;                        // 라운드당 스폰 마릿수
@@ -40,6 +42,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (isClear && genCount == enemyCount)
         {
+            roundtext.text = Round.ToString() + " Round";
 
             waitTime -= Time.deltaTime;
             // 10초 카운팅
@@ -48,6 +51,7 @@ public class SpawnManager : MonoBehaviour
                 isClear = false;
                 genCount = 0;
                 Round++;
+                Destroy(roundtext);
             }
             // 라운드 몇 띄우기
         }
