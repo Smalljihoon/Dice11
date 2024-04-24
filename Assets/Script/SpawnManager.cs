@@ -15,6 +15,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] float spawnRate;                   // 스폰주기
     [SerializeField] TMP_Text roundtext;                // 라운드 tmp text
     [SerializeField] GameObject Alarm;                  //
+    [SerializeField] Transform alarmParent;             //
 
     public Enemy currentTarget = null;                  // 현재 타겟 (queue의 첫번째)
     public int enemyCount = 30;                        // 라운드당 스폰 마릿수
@@ -42,6 +43,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (isClear && genCount == enemyCount)
         {
+            Alarm.SetActive(true);
             roundtext.text = Round.ToString() + " Round";
 
             waitTime -= Time.deltaTime;
@@ -51,8 +53,11 @@ public class SpawnManager : MonoBehaviour
                 isClear = false;
                 genCount = 0;
                 Round++;
+                Alarm.SetActive(false);
                 Destroy(roundtext);
+                Debug.Log(Round);
             }
+
             // 라운드 몇 띄우기
         }
         else// if(!isClear)
@@ -71,8 +76,10 @@ public class SpawnManager : MonoBehaviour
                 currentTarget = enemys.Dequeue();
             }
         }
+    }
 
-
+    public void RoundCount()
+    {
 
     }
 

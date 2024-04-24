@@ -81,11 +81,11 @@ public class Enemy : MonoBehaviour
         {
             Destroy(this.gameObject);
             GameManager.instance.SetRemain(-SpawnManager.instance.Round * 10);
+
             if (SpawnManager.instance.enemyCount - 1 == enemyID)
             {
                 SpawnManager.instance.isClear = true;
             }
-            //Á×À½
         }
     }
 
