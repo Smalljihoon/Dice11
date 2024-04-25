@@ -1407,7 +1407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170c50cbd911e8b40b78726a9fd92601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slot: {fileID: 0}
 --- !u!1 &400723103
 GameObject:
   m_ObjectHideFlags: 0
@@ -8244,7 +8243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170c50cbd911e8b40b78726a9fd92601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slot: {fileID: 2105136624}
 --- !u!1 &2126310112
 GameObject:
   m_ObjectHideFlags: 0
@@ -8376,6 +8374,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -25.2
       objectReference: {fileID: 0}
+    - target: {fileID: 1992234387184599201, guid: 265d1aedb05dfa0428029fc56693fab8, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992234387184599201, guid: 265d1aedb05dfa0428029fc56693fab8, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
     - target: {fileID: 5268458105183595108, guid: 265d1aedb05dfa0428029fc56693fab8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8464,7 +8470,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7487804624334392637, guid: 265d1aedb05dfa0428029fc56693fab8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
