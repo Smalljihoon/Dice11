@@ -9,6 +9,7 @@ TagManager:
   - Hole
   - Dice
   - Slot
+  - TypePanel
   layers:
   - Default
   - TransparentFX

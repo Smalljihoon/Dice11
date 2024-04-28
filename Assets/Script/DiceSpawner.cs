@@ -41,8 +41,8 @@ public class DiceSpawner : MonoBehaviour
             {
                 int a = Random.Range(0, slots.Length);
                 RandomPick(a);
-                GameManager.instance.SetRemain(GameManager.instance.need);
-                GameManager.instance.SetNeedSP(usePlus);
+                GameManager.instance.MinusRemain(GameManager.instance.need);
+                GameManager.instance.PlusNeedSP(usePlus);
             }
             else
             {

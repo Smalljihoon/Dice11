@@ -54,16 +54,25 @@ public class GameManager : MonoBehaviour
         need = Minus;
     }
 
-    public void SetRemain(int value)
+    public void MinusRemain(int value)
     {
         reamain -= value;
     }
 
-    public void SetNeedSP(int value)
+    public void PlusRemain(int value)
+    {
+        reamain += value;
+    }
+
+    public void PlusNeedSP(int value)
     {
         need += value;
     }
 
+    public void MinusNeedSP(int value)
+    {
+        need -= value;
+    }
     // 몬스터를 죽이면 + 10 SP  -- 라운드 올라갈때마다 얻는 sp+10
     // 주사위를 소환할 때마다 필요수치가 10씩 늘어남
 

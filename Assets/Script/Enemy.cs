@@ -9,12 +9,6 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    //public enum TYPE
-    //{
-    //    NORMAL,
-    //    CRITICAL,
-    //}
-
     [SerializeField] float speed;                           // 적 이동속도
     [SerializeField] float distance;                        // ray 거리
     [SerializeField] TMP_Text hp_text;                      // 적 체력
@@ -39,6 +33,7 @@ public class Enemy : MonoBehaviour
     {
         this.enemyID = enemyID;
         this.hp = hp;
+        hp_text.text = hp.ToString();
     }
 
     private void FixedUpdate()
@@ -80,7 +75,7 @@ public class Enemy : MonoBehaviour
         if (hp <= 0)
         {
             Destroy(this.gameObject);
-            GameManager.instance.SetRemain(-SpawnManager.instance.Round * 10);
+            GameManager.instance.PlusRemain(SpawnManager.instance.Round * 10);
 
             if (SpawnManager.instance.enemyCount - 1 == enemyID)
             {

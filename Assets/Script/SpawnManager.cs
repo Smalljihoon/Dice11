@@ -54,8 +54,8 @@ public class SpawnManager : MonoBehaviour
                 genCount = 0;
                 Round++;
                 Alarm.SetActive(false);
-                Destroy(roundtext);
-                Debug.Log(Round);
+                //Destroy(roundtext);
+                Debug.Log("라운드 : " +Round);
             }
 
             // 라운드 몇 띄우기
@@ -76,11 +76,6 @@ public class SpawnManager : MonoBehaviour
                 currentTarget = enemys.Dequeue();
             }
         }
-    }
-
-    public void RoundCount()
-    {
-
     }
 
     public void LifeDown()

@@ -29,8 +29,6 @@ public class Dice : MonoBehaviour
     protected int damage;                                         // 공격력
     public int level = 0;                                         // 파워
     public int eyes = 1;                                          // 주사위 레벨(눈금)
-    //public int cureye;
-    //���ݼӵ�
     protected float DPS = 0.7f;                                  // 총알 속도
     public Dice_category category;
 
@@ -71,15 +69,15 @@ public class Dice : MonoBehaviour
 
     protected virtual void Update()
     {
-        DPS -= Time.deltaTime;                                 // DPS 1로 설정해둬서 1초마다 발사
+        DPS -= Time.deltaTime;                                                       // DPS 1로 설정해둬서 1초마다 발사
         if (DPS <= 0)
         {
-            if (SpawnManager.instance.currentTarget != null)        // SpawnManager에서 생성한 적이 현재 있으면
+            if (SpawnManager.instance.currentTarget != null)          // SpawnManager에서 생성한 적이 현재 있으면
             {
-                StopAllCoroutines();                                // 모든 코루틴 멈추고
-                StartCoroutine(Shot());                             // 현재 타겟 적을 향해 발사 코루틴
+                StopAllCoroutines();                                                    // 모든 코루틴 멈추고
+                StartCoroutine(Shot());                                                // 현재 타겟 적을 향해 발사 코루틴
 
-                DPS = 0.7f;                                      // rateTime이 0이 되었으므로 1로 다시 초기화
+                DPS = 0.7f;                                                                   // rateTime이 0이 되었으므로 1로 다시 초기화
             }
         }
         
