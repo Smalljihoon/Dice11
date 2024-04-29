@@ -4216,8 +4216,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 8332096300920895400, guid: 698df16af2d0d374cb6353e1528e5518, type: 3}
   damage: 20
-  eyes: 1
   level: 1
+  eyes: 1
   category: 4
 --- !u!1 &8905981819532149266
 GameObject:

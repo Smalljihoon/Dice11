@@ -53,13 +53,13 @@ public class Enemy : MonoBehaviour
         transform.Translate(directions[count] * speed * Time.deltaTime);
     }
 
-    public void OnTriggerEnter2D(Collider2D col)            // trigger 감지
+    public void OnTriggerEnter2D(Collider2D col)          // trigger 감지
     {
-        if (col.tag == "Hole")                              // 충돌한게 Hole이면
+        if (col.tag == "Hole")                                             // 충돌한게 Hole이면
         {
-            Destroy(this.gameObject);                       // enemy 파괴
-            life--;                                         // 생명 -1
+            life--;                                                                 // 생명 -1
             SpawnManager.instance.LifeDown();               // spawnmanager에서 관리하는 lifedown함수 싱글톤 불러오기
+            Destroy(this.gameObject);                                // enemy 파괴
         }
     }
 
@@ -74,13 +74,16 @@ public class Enemy : MonoBehaviour
 
         if (hp <= 0)
         {
-            Destroy(this.gameObject);
             GameManager.instance.PlusRemain(SpawnManager.instance.Round * 10);
 
             if (SpawnManager.instance.enemyCount - 1 == enemyID)
             {
                 SpawnManager.instance.isClear = true;
+                SpawnManager.instance.Round++;
+                SpawnManager.instance.roundtext.text = SpawnManager.instance.Round.ToString() + " Round";
+                SpawnManager.instance.Alarm.SetActive(true);
             }
+            Destroy(this.gameObject);
         }
     }
 

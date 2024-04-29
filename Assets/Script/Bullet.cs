@@ -13,11 +13,6 @@ public class Bullet : MonoBehaviour
     private Transform target;                   // 타겟
     private int attackDamage = 0;               // 공격력을 담을 매개변수
 
-    private void Start()
-    {
-
-    }
-
     public void Init(int damage, Transform target)      // 공격력과 타겟 초기화 ( 앞으로 요청한 값을 받는 곳)
     {
         // 공격력 초기화 

@@ -21,7 +21,7 @@ public enum Dice_category
 
 public class Dice : MonoBehaviour
 {
-    [SerializeField] GameObject bullet;                              // 총알
+    [SerializeField] protected GameObject bullet;                              // 총알
 
     protected List<Bullet> bullets = new List<Bullet>();             // 총알 리스트를 bullets에 담는다 
 
@@ -32,7 +32,7 @@ public class Dice : MonoBehaviour
     protected float DPS = 0.7f;                                  // 총알 속도
     public Dice_category category;
 
-    private void Awake()
+    protected void Awake()
     {
         var fusion = GetComponent<FusionManager>();
     }
