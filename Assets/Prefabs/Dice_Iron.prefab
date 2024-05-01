@@ -1746,9 +1746,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8332096300920895400, guid: 698df16af2d0d374cb6353e1528e5518, type: 3}
-  damage: 15
-  eyes: 1
+  damage: 100
   level: 1
+  eyes: 1
   category: 0
 --- !u!1 &7907644806980620271
 GameObject:

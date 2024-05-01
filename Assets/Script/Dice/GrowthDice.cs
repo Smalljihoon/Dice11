@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class GrowthDice : Dice
 {
+    [SerializeField] DiceSpawner spawner;
+    protected float DPS = 2f;
+    private float Remaining = 5f;
+
+    private void Awake()
+    {
+        spawner = FindAnyObjectByType<DiceSpawner>();
+    }
+
     protected override void Start()
     {
         for (int i = 0; i < eyes; ++i)                                                                // 주사위 눈금만큼 반복문
@@ -18,6 +27,42 @@ public class GrowthDice : Dice
         }
 
         category = Dice_category.Growth;
+
     }
 
+    protected override void Update()
+    {
+        DPS -= Time.deltaTime;
+        Remaining -= Time.deltaTime;
+        // DPS 1로 설정해둬서 1초마다 발사
+        if (DPS <= 0)
+        {
+            if (SpawnManager.instance.currentTarget != null)          // SpawnManager에서 생성한 적이 현재 있으면
+            {
+                StopAllCoroutines();                                                    // 모든 코루틴 멈추고
+                StartCoroutine(Shot());                                                // 현재 타겟 적을 향해 발사 코루틴
+
+                DPS = 2f;                                                                   // rateTime이 0이 되었으므로 1로 다시 초기화
+            }
+        }
+
+        // 15초 뒤에 다음 눈금으로 랜덤한 다이스로 성장
+        if (Remaining <= 0)
+        {
+            GrowthUp();
+        }
+    }
+
+    private void GrowthUp()
+    {
+        int change = this.eyes;
+        change++;
+        GameObject temp = spawner.dice[Random.Range(0, spawner.dice.Length)];
+        GameObject diceGO = Instantiate(temp, gameObject.transform.parent);
+        var Redice = diceGO.GetComponent<Dice>();
+        Redice.eyes = change;
+        Redice.SetDiceEye();
+        Destroy(gameObject);
+        Remaining = 5f;
+    }
 }

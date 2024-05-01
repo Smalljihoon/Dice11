@@ -6,6 +6,8 @@ public class JokerDice : Dice
 {
     protected override void Start()
     {
+        category = Dice_category.Joker;
+
         for (int i = 0; i < eyes; ++i)                                                                // 주사위 눈금만큼 반복문
         {
             GameObject bulletGO = Instantiate(bullet, transform);                // 주사위에 총알을 생성 = bulletGO
@@ -16,7 +18,10 @@ public class JokerDice : Dice
 
             bullets.Add(bulletItem);                                                                 // 생성된 총알을 bullets리스트에 담는다
         }
+    }
 
-        category = Dice_category.Joker;
+    protected override void Update()
+    {
+        base.Update();
     }
 }

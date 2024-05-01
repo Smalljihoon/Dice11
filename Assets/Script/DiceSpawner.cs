@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class DiceSpawner : MonoBehaviour
 {
     [SerializeField] Button bt;
-    [SerializeField] GameObject[] dice;
+    [SerializeField] public GameObject[] dice;
 
     [SerializeField] Transform[] slots = null;
 
@@ -61,9 +61,6 @@ public class DiceSpawner : MonoBehaviour
         {
             var temp = dice[Random.Range(0, dice.Length)];
             var diceGO = Instantiate(temp, slots[n]);
-            //dices.Add(diceGO.GetComponent<Dice>());
-
-            //dices[0].Skill();
         }
         else                                                                                        // slot이 null이 아니면 재귀호출
         {

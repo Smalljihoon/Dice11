@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class SnowDice : Dice
 {
+    float DPS = 0.6f;
+    float typhoonCount = 5f;
+    float typhoonfirst = 4f;
+    float typhoonsceond = 1f;
+
     protected override void Start()
     {
         for (int i = 0; i < eyes; ++i)                                                                // 주사위 눈금만큼 반복문
@@ -18,5 +23,64 @@ public class SnowDice : Dice
         }
 
         category = Dice_category.Snow;
+    }
+    // 기본 상태에서 5초가 지나면 강풍 1단계 공격속도 1.5배, 지속시간 4초,
+    // 1단계에서 5초가 더 지나면 강풍 2단계 공격속도 2배, 지속시간 1초  -기본 공격력 20  -1 파워업 당 +30
+
+    protected override void Update()
+    {
+        DPS -= Time.deltaTime;                                                       // DPS 1로 설정해둬서 1초마다 발사
+        typhoonCount -= Time.deltaTime;
+        if (DPS <= 0)
+        {
+            if (SpawnManager.instance.currentTarget != null)          // SpawnManager에서 생성한 적이 현재 있으면
+            {
+                StopAllCoroutines();                                                    // 모든 코루틴 멈추고
+                StartCoroutine(Shot());                                                // 현재 타겟 적을 향해 발사 코루틴
+                DPS = 0.6f;                                                                   // rateTime이 0이 되었으므로 1로 다시 초기화
+                Debug.Log("일반 공격");
+            }
+        }
+
+        if (typhoonCount <= 0) // 1단계 태풍
+        {
+            StopAllCoroutines();
+            DPS = 0.3f;
+            typhoonfirst -= Time.deltaTime;
+            if (DPS <= 0)
+            {
+                if (SpawnManager.instance.currentTarget != null)          // SpawnManager에서 생성한 적이 현재 있으면
+                {
+                    StopAllCoroutines();                                                    // 모든 코루틴 멈추고
+                    StartCoroutine(Shot());                                                // 현재 타겟 적을 향해 발사 코루틴
+                    DPS = 0.3f;                                                                   // rateTime이 0이 되었으므로 1로 다시 초기화
+                    Debug.Log("1단계 태풍");
+                }
+            }
+
+            if (typhoonfirst <= 0) // 2단계 태풍
+            {
+                StopAllCoroutines();
+                DPS = 0.1f;
+                typhoonsceond-= Time.deltaTime;
+                if (DPS <= 0)
+                {
+                    if (SpawnManager.instance.currentTarget != null)          // SpawnManager에서 생성한 적이 현재 있으면
+                    {
+                        StopAllCoroutines();                                                    // 모든 코루틴 멈추고
+                        StartCoroutine(Shot());                                                // 현재 타겟 적을 향해 발사 코루틴
+                        DPS = 0.1f;                                                                   // rateTime이 0이 되었으므로 1로 다시 초기화
+                        Debug.Log("2단계 태풍");
+                    }
+                }
+
+                 if(typhoonsceond <= 0)
+                {
+                    StopAllCoroutines();
+                    DPS = 0.6f;
+                    return;
+                }
+            }
+        }
     }
 }

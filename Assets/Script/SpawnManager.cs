@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager instance = null;         // 싱글톤
-    private Queue<Enemy> enemys = new Queue<Enemy>();   // 맨 앞 적을 공격해야하기에 Queue로 맨앞타겟 잡을 것
+    public Queue<Enemy> enemys = new Queue<Enemy>();   // 맨 앞 적을 공격해야하기에 Queue로 맨앞타겟 잡을 것
 
     [SerializeField] Image[] LifeImage;                 // 빨간 하트 이미지
     [SerializeField] Spawn spawn;                       // Spawn 스크립트 인스턴스
@@ -86,12 +86,13 @@ public class SpawnManager : MonoBehaviour
 
     public void LifeDown()
     {
+        // 체력이 0보다 크면 체력 -1
         if (life > 0)
         {
             LifeImage[life - 1].enabled = false;
             life--;
         }
-
+        // 체력이 0이면 3초뒤 로비화면
         if (life == 0)
         {
             Lose.SetActive(true);
@@ -104,6 +105,5 @@ public class SpawnManager : MonoBehaviour
     public void SceneChange()
     {
         SceneManager.LoadScene("start");
-
     }
 }

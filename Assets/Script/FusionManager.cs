@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class FusionManager : MonoBehaviour
@@ -39,7 +36,6 @@ public class FusionManager : MonoBehaviour
                 }
             }
         }
-
         // 좌클릭 했을때의 슬롯에 주사위가 있으면
         if (selectDice != null)
         {
@@ -61,7 +57,17 @@ public class FusionManager : MonoBehaviour
                     {
                         Dice hitdice = hitOB.GetChild(0).GetComponent<Dice>();
 
-                        if (hitdice.category == selectDice.category)
+                        // 처음 클릭한 다이스가 조커 다이스라면
+                        //if(selectDice.category == Dice_category.Joker)
+                        //{
+                        //    if(hitdice.eyes == selectDice.eyes)
+                        //    {
+                        //        selectDice.category = hitdice.category;
+                        //        selectDice.transform.localPosition = Vector3.zero;
+
+                        //    }
+                        //}
+                        if (hitdice.category == selectDice.category || selectDice.category == Dice_category.Joker)
                         {
                             if (hitdice.eyes == selectDice.eyes)
                             {
@@ -71,22 +77,37 @@ public class FusionManager : MonoBehaviour
                                 }
                                 else
                                 {
-                                    int remain = hitdice.eyes;
-                                    remain++;
-                                    Debug.Log("조합");
-                                    Destroy(hitOB.GetChild(0).gameObject);
-                                    Destroy(hittOB.GetChild(0).gameObject);
+                                    if (selectDice.category == Dice_category.Joker)
+                                    {
+                                        if (hitdice.eyes == selectDice.eyes)
+                                        {
+                                            selectDice.category = hitdice.category;
+                                            selectDice.transform.localPosition = Vector3.zero;
 
-                                    var temp = dice[Random.Range(0, dice.Length)];
-                                    var diceGO = Instantiate(temp, hitOB);
-                                    var newDice = diceGO.GetComponent<Dice>();
-                                    newDice.eyes = remain;
-                                    newDice.SetDiceEye();
-                                    
-                                    Debug.Log(newDice.eyes);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        int remain = hitdice.eyes;
+                                        remain++;
+                                        Debug.Log("조합");
+                                        Destroy(hitOB.GetChild(0).gameObject);
+                                        Destroy(hittOB.GetChild(0).gameObject);
 
+                                        var temp = dice[Random.Range(0, dice.Length)];
+                                        var diceGO = Instantiate(temp, hitOB);
+                                        var newDice = diceGO.GetComponent<Dice>();
+                                        newDice.eyes = remain;
+                                        newDice.SetDiceEye();
 
+                                        Debug.Log(newDice.eyes);
+                                        selectDice = null;
+                                    }
                                 }
+                            }
+                            else
+                            {
+                                selectDice.transform.localPosition = Vector3.zero;
                             }
                         }
                         else
@@ -98,12 +119,9 @@ public class FusionManager : MonoBehaviour
                     {
                         selectDice.transform.localPosition = Vector3.zero;
                     }
+                   
+                    //selectDice = null;
                 }
-                else
-                {
-                    selectDice.transform.localPosition = Vector3.zero;
-                }
-                selectDice = null;
             }
         }
     }

@@ -2021,10 +2021,10 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: " \uD0DC\uD48D\uC8FC\uC0AC\uC704  -\uAE30\uBCF8 \uC0C1\uD0DC\uC5D0\uC11C
             5\uCD08\uAC00 \uC9C0\uB098\uBA74 \uAC15\uD48D 1\uB2E8\uACC4 \uACF5\uACA9\uC18D\uB3C4
-            1.5\uBC30\uAC00 \uB418\uACE0 1\uB2E8\uACC4\uC5D0\uC11C 5\uCD08\uAC00
-            \uB354 \uC9C0\uB098\uBA74 \uAC15\uD48D 2\uB2E8\uACC4 \uACF5\uACA9\uC18D\uB3C4
-            2\uBC30\uAC00 \uB41C\uB2E4.  -\uAE30\uBCF8 \uACF5\uACA9\uB825 20  -1
-            \uD30C\uC6CC\uC5C5 \uB2F9 +30  -\uD0C0\uAE43 \uB9E8\uC55E"
+            1.5\uBC30, \uC9C0\uC18D\uC2DC\uAC04 4\uCD08,  1\uB2E8\uACC4\uC5D0\uC11C
+            5\uCD08\uAC00 \uB354 \uC9C0\uB098\uBA74 \uAC15\uD48D 2\uB2E8\uACC4 \uACF5\uACA9\uC18D\uB3C4
+            2\uBC30, \uC9C0\uC18D\uC2DC\uAC04 1\uCD08  -\uAE30\uBCF8 \uACF5\uACA9\uB825
+            20  -1 \uD30C\uC6CC\uC5C5 \uB2F9 +30  -\uD0C0\uAE43 \uB9E8\uC55E"
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &576751948
@@ -3371,37 +3371,6 @@ MonoBehaviour:
   diceImage: {fileID: 1468692086}
   text: {fileID: 624161737}
   category: 0
---- !u!1 &1096653268
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1096653270}
-  m_Layer: 0
-  m_Name: InvenManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1096653270
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1096653268}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 450, y: 732.3897, z: -2.0827286}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1249857619
 GameObject:
   m_ObjectHideFlags: 0
@@ -6220,4 +6189,3 @@ SceneRoots:
   - {fileID: 206612135}
   - {fileID: 700914518}
   - {fileID: 1811164202}
-  - {fileID: 1096653270}

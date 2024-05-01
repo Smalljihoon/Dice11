@@ -29,7 +29,7 @@ public class Dice : MonoBehaviour
     protected int damage;                                         // 공격력
     public int level = 0;                                         // 파워
     public int eyes = 1;                                          // 주사위 레벨(눈금)
-    protected float DPS = 0.7f;                                  // 총알 속도
+    public float DPS = 0.7f;                                  // 총알 속도
     public Dice_category category;
 
     protected void Awake()
@@ -50,12 +50,7 @@ public class Dice : MonoBehaviour
         }
     }
 
-    public virtual void Skill()
-    {
-
-    }
-
-    private void OnDestroy()
+    protected void OnDestroy()
     {
         StopAllCoroutines();                            // 총알을 파괴하기 전 모든 코루틴 멈추기
 
