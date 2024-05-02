@@ -2204,7 +2204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7720993339633089728
 Transform:
   m_ObjectHideFlags: 0
@@ -4173,6 +4173,7 @@ MonoBehaviour:
   level: 1
   eyes: 1
   DPS: 0.7
+  oriDPS: 0.7
   category: 4
 --- !u!1 &8905981819532149266
 GameObject:

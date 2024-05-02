@@ -1704,7 +1704,7 @@ MonoBehaviour:
   level: 1
   eyes: 1
   DPS: 0.7
-  category: 0
+  category: 5
 --- !u!1 &7907644806980620271
 GameObject:
   m_ObjectHideFlags: 0

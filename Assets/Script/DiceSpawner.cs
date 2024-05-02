@@ -8,9 +8,10 @@ using UnityEngine.UI;
 public class DiceSpawner : MonoBehaviour
 {
     [SerializeField] Button bt;
-    [SerializeField] public GameObject[] dice;
+    [SerializeField] public List<GameObject> diceprefabs =new List<GameObject>();
 
     [SerializeField] Transform[] slots = null;
+    public List<Dice> dices = new List<Dice>();
 
     public int usePlus = 10;    // 소환시 필요 sp 가중치
     //List<Dice> dices = new List<Dice>();
@@ -19,6 +20,16 @@ public class DiceSpawner : MonoBehaviour
 
     private void Start()
     {
+        foreach(var dice in Inventory.Instance.diceDatas)
+        {
+            if(dice.category == Dice_category.None)
+            {
+                continue;
+            }
+
+            diceprefabs.Add(dice.prefab);
+        }
+
         bt.onClick.AddListener(DiceSummon);
     }
 
@@ -26,7 +37,6 @@ public class DiceSpawner : MonoBehaviour
     {
         if (GameManager.instance.reamain >= GameManager.instance.need)
         {
-
             bool isEmptySlot = false;
             foreach (Transform slot in slots)
             {
@@ -59,8 +69,9 @@ public class DiceSpawner : MonoBehaviour
     {
         if (slots[n].childCount == 0)                                                   // slot이 null이면 소환
         {
-            var temp = dice[Random.Range(0, dice.Length)];
+            var temp = diceprefabs[Random.Range(0, diceprefabs.Count)];
             var diceGO = Instantiate(temp, slots[n]);
+            dices.Add(diceGO.GetComponent<Dice>());
         }
         else                                                                                        // slot이 null이 아니면 재귀호출
         {
@@ -69,4 +80,8 @@ public class DiceSpawner : MonoBehaviour
         }
     }
 
+    public void RemoveDice(Dice dice)
+    {
+        dices.Remove(dice);
+    }
 }

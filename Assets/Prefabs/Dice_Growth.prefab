@@ -1301,7 +1301,7 @@ MonoBehaviour:
   damage: 10
   level: 1
   eyes: 1
-  DPS: 0.7
+  DPS: 2
   category: 1
   spawner: {fileID: 0}
 --- !u!1 &6115134137338094634

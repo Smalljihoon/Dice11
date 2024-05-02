@@ -213,7 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7046570a685353a4793b1fc7f63f00d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: 0
   diceimg: {fileID: 51453287}
   isSelect: 0
 --- !u!114 &51453290
@@ -437,7 +436,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7046570a685353a4793b1fc7f63f00d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: 0
   diceimg: {fileID: 148792226}
   isSelect: 0
 --- !u!114 &148792229
@@ -650,6 +648,7 @@ MonoBehaviour:
   typePanel: {fileID: 1096015943}
   Impormation: {fileID: 624161737}
   img: {fileID: 110877558}
+  prefab: {fileID: 8794784119597138324, guid: 4ea58810455993a42b04837deef4e1d8, type: 3}
   category: 4
 --- !u!1 &201921669
 GameObject:
@@ -1224,7 +1223,6 @@ GameObject:
   - component: {fileID: 297845454}
   - component: {fileID: 297845453}
   - component: {fileID: 297845452}
-  - component: {fileID: 297845455}
   m_Layer: 5
   m_Name: Battle_Button
   m_TagString: Untagged
@@ -1296,9 +1294,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 297845455}
-        m_TargetAssemblyTypeName: Battle, Assembly-CSharp
-        m_MethodName: SceneChange
+      - m_Target: {fileID: 1846268310}
+        m_TargetAssemblyTypeName: StartSceneManager, Assembly-CSharp
+        m_MethodName: OnButtonClick_StartBattleScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1346,18 +1344,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297845450}
   m_CullTransparentMesh: 1
---- !u!114 &297845455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 297845450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 942f33d0b95f4cc4f846259d3b691213, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &369017594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,6 +1355,7 @@ GameObject:
   - component: {fileID: 369017595}
   - component: {fileID: 369017597}
   - component: {fileID: 369017596}
+  - component: {fileID: 369017598}
   m_Layer: 5
   m_Name: explanation_panel
   m_TagString: Untagged
@@ -1434,6 +1421,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369017594}
   m_CullTransparentMesh: 1
+--- !u!114 &369017598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369017594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a15ab69de92e04185979c28cd2c75b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decks:
+  - {fileID: 51453289}
+  - {fileID: 148792228}
+  - {fileID: 897850155}
+  - {fileID: 1855126284}
+  - {fileID: 1093962634}
+  noneSprite: {fileID: 21300000, guid: fcdc9ec444a4fb9478011f279261c381, type: 3}
 --- !u!1 &383345082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1924,6 +1930,7 @@ MonoBehaviour:
   typePanel: {fileID: 1096015943}
   Impormation: {fileID: 624161737}
   img: {fileID: 751118887}
+  prefab: {fileID: 7272987290373609461, guid: f563be9a175d58641862b8ee1c7732d7, type: 3}
   category: 2
 --- !u!1 &576751945
 GameObject:
@@ -2080,6 +2087,7 @@ MonoBehaviour:
   typePanel: {fileID: 1096015943}
   Impormation: {fileID: 624161737}
   img: {fileID: 674507709}
+  prefab: {fileID: 168000266083294882, guid: d8450ead13ed34b4283183a48f904bf9, type: 3}
   category: 3
 --- !u!1 &624161735
 GameObject:
@@ -2695,7 +2703,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7046570a685353a4793b1fc7f63f00d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: 0
   diceimg: {fileID: 897850153}
   isSelect: 0
 --- !u!114 &897850156
@@ -2906,6 +2913,7 @@ MonoBehaviour:
   typePanel: {fileID: 1096015943}
   Impormation: {fileID: 624161737}
   img: {fileID: 1057223721}
+  prefab: {fileID: 7468545999784322436, guid: cad021a63243f184c9a5ff9a2d2a9f58, type: 3}
   category: 5
 --- !u!1 &1000436478
 GameObject:
@@ -3216,7 +3224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7046570a685353a4793b1fc7f63f00d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: 0
   diceimg: {fileID: 1093962632}
   isSelect: 0
 --- !u!114 &1093962635
@@ -3293,7 +3300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1096015940
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3370,6 +3377,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diceImage: {fileID: 1468692086}
   text: {fileID: 624161737}
+  explanationPanel: {fileID: 369017598}
+  go: {fileID: 0}
   category: 0
 --- !u!1 &1249857619
 GameObject:
@@ -4160,7 +4169,6 @@ GameObject:
   - component: {fileID: 1664617808}
   - component: {fileID: 1664617807}
   - component: {fileID: 1664617806}
-  - component: {fileID: 1664617809}
   m_Layer: 5
   m_Name: Iventory_Button
   m_TagString: Untagged
@@ -4282,26 +4290,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664617804}
   m_CullTransparentMesh: 1
---- !u!114 &1664617809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664617804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca6c45bb660aa3d4e96f3c1c5ea19ea4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dice:
-  - {fileID: 51453289}
-  - {fileID: 148792228}
-  - {fileID: 897850155}
-  - {fileID: 1855126284}
-  - {fileID: 1093962634}
-  typePanel: {fileID: 1096015943}
-  noneSprite: {fileID: 21300000, guid: fcdc9ec444a4fb9478011f279261c381, type: 3}
 --- !u!1 &1702260180
 GameObject:
   m_ObjectHideFlags: 0
@@ -4847,6 +4835,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1816997715}
   m_CullTransparentMesh: 1
+--- !u!1 &1846268309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1846268311}
+  - component: {fileID: 1846268310}
+  m_Layer: 0
+  m_Name: StartSceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1846268310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846268309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e37fc4fc675b24dbafc278359e52b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explanationPanel: {fileID: 369017598}
+  typePanel: {fileID: 1096015943}
+--- !u!4 &1846268311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846268309}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 199.3157, y: 346.13412, z: 0.6814141}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1855126280
 GameObject:
   m_ObjectHideFlags: 0
@@ -4937,7 +4971,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7046570a685353a4793b1fc7f63f00d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: 0
   diceimg: {fileID: 1855126282}
   isSelect: 0
 --- !u!114 &1855126285
@@ -4996,6 +5029,50 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1868597054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1868597056}
+  - component: {fileID: 1868597055}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1868597055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868597054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6c45bb660aa3d4e96f3c1c5ea19ea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1868597056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868597054}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 199.3157, y: 346.13412, z: 0.6814141}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1887635512
 GameObject:
   m_ObjectHideFlags: 0
@@ -5816,6 +5893,7 @@ MonoBehaviour:
   typePanel: {fileID: 1096015943}
   Impormation: {fileID: 624161737}
   img: {fileID: 1452763190}
+  prefab: {fileID: 2307803769815113166, guid: d9e661d7e910ba248b516cb475711580, type: 3}
   category: 6
 --- !u!1 &2068094565
 GameObject:
@@ -6046,6 +6124,7 @@ MonoBehaviour:
   typePanel: {fileID: 1096015943}
   Impormation: {fileID: 624161737}
   img: {fileID: 1702260182}
+  prefab: {fileID: 5393570971399406557, guid: 92f703c97cc731942b7435606d1b4468, type: 3}
   category: 1
 --- !u!1 &2130151473
 GameObject:
@@ -6189,3 +6268,5 @@ SceneRoots:
   - {fileID: 206612135}
   - {fileID: 700914518}
   - {fileID: 1811164202}
+  - {fileID: 1846268311}
+  - {fileID: 1868597056}

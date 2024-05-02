@@ -25,7 +25,7 @@ public class FusionManager : MonoBehaviour
         {
             // hitt라는 레이를 마우스 좌클릭 했을 때 쏜다
             RaycastHit2D hitt = Physics2D.Raycast(MouseWorldPosition(), Camera.main.transform.forward, Mathf.Infinity, layer);
-            
+
             // 레이를 쐈을때 쏜 지점이 슬롯이라면
             if (hitt.transform != null)
             {
@@ -57,7 +57,7 @@ public class FusionManager : MonoBehaviour
                 if (hit.transform != null)
                 {
                     Transform hitOB = hit.transform;
-                    
+
                     // 뗐을 때 슬롯의 자식에 다이스가 있다면 
                     if (hitOB.childCount > 0)
                     {
@@ -80,16 +80,14 @@ public class FusionManager : MonoBehaviour
                                     // 첫 클릭 했을 때 다이스가 조커인가부터 체크
                                     if (selectDice.category == Dice_category.Joker)
                                     {
-                                        // 두 다이스가 눈금이 같다면
-                                        if (hitdice.eyes == selectDice.eyes)
-                                        {
-                                            // 뗐을 때 다이스와 동일한 다이스로 copy의 변수에 새로 생성
-                                            var copy = Instantiate(hitdice, hittOB);
-                                            // 원래 있던 자리로 복귀
-                                            selectDice.transform.localPosition = Vector3.zero;
-                                            // 기존 조커다이스 파괴
-                                            Destroy(hittOB.GetChild(0).gameObject);
-                                        }
+                                        // 뗐을 때 다이스와 동일한 다이스로 copy의 변수에 새로 생성
+                                        var copy = Instantiate(hitdice, hittOB);
+                                        // 원래 있던 자리로 복귀
+                                        copy.transform.localPosition = Vector3.zero;
+                                        // 기존 조커다이스 파괴
+                                        Destroy(hittOB.GetChild(0).gameObject);
+
+                                        GameManager.instance.spawner.dices.Add(copy.GetComponent<Dice>());
                                     }
                                     // 두 다이스가 같은 다이스라면
                                     else
@@ -108,6 +106,7 @@ public class FusionManager : MonoBehaviour
                                         newDice.eyes = remain;
                                         // SetDiceEye = 다이스 자식에 각 눈금별로 자식을 생성 해뒀기에 눈금에 맞는 자식을 활성화 시켜주는 함수
                                         newDice.SetDiceEye();
+                                        GameManager.instance.spawner.dices.Add(newDice);
                                     }
                                 }
                             }
@@ -125,7 +124,7 @@ public class FusionManager : MonoBehaviour
                     {
                         selectDice.transform.localPosition = Vector3.zero;
                     }
-                   
+
                     selectDice = null;
                 }
             }

@@ -27,11 +27,15 @@ public class Dice : MonoBehaviour
 
     [SerializeField]
     protected int damage;                                           // 공격력
+    protected int enforce;                                           // 공격력
+
     public int level = 1;                                           // 파워 레벨
     public int eyes = 1;                                            // 주사위 눈금
     public float DPS = 0.7f;                                        // 총알 속도
-    public Dice_category category;
+    public float oriDPS = 0.7f;
 
+    public Dice_category category;
+    protected Color bulletColor;
     protected void Awake()
     {
         //var fusion = GetComponent<FusionManager>();
@@ -48,9 +52,11 @@ public class Dice : MonoBehaviour
 
             bullets.Add(bulletItem);                                             // 생성된 총알을 bullets리스트에 담는다
         }
+
+        SetEnforceFromInventory();
     }
 
-    protected void OnDestroy()
+    protected virtual void OnDestroy()
     {
         StopAllCoroutines();                            // 총알을 파괴하기 전 모든 코루틴 멈추기
 
@@ -60,6 +66,8 @@ public class Dice : MonoBehaviour
         }
 
         bullets.Clear();                                // List.Cleat() : Destroy만 할 경우 잔여 메모리가 남아있기 때문에 잔여 메모리 청소? 개념
+
+        GameManager.instance.spawner.RemoveDice(this);
     }
 
     protected virtual void Update()
@@ -72,7 +80,7 @@ public class Dice : MonoBehaviour
                 StopAllCoroutines();                                                // 모든 코루틴 멈추고
                 StartCoroutine(Shot());                                             // 현재 타겟 적을 향해 발사 코루틴
 
-                DPS = 0.7f;                                                         // rateTime이 0이 되었으므로 1로 다시 초기화
+                DPS = oriDPS;                                                         // rateTime이 0이 되었으므로 1로 다시 초기화
             }
         }
     }
@@ -141,13 +149,25 @@ public class Dice : MonoBehaviour
             if (SpawnManager.instance.currentTarget == null)
                 continue;
 
+            bullet.gameObject.GetComponent<Renderer>().material.color = bulletColor;
+
             bullet.gameObject.SetActive(true);
 
             bullet.transform.localPosition = Vector3.zero;
 
-            bullet.Init(damage, SpawnManager.instance.currentTarget.transform);
+            bullet.Init(damage * enforce, SpawnManager.instance.currentTarget.transform);
 
             yield return new WaitForSeconds(delay);
         }
+    }
+
+    public void SetEnforce(int enforce)
+    {
+        this.enforce = enforce;
+    }
+
+    public void SetEnforceFromInventory()
+    {
+        enforce = Inventory.Instance.GetEnforce(category);
     }
 }

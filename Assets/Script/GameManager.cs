@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] TMP_Text needSP;           // 소환할 때 필요한 sp
     [SerializeField] TMP_Text remainSP;         // 내가 가지고 있는 sp
+    public DiceSpawner spawner;
+    public FusionManager fusionManager;
 
     public int reamain = 100;
     public int need = 10;
@@ -26,20 +28,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)                                           // instance가 null. 즉, 시스템상에 존재하고 있지 않을때
-        {
-            instance = this;                                            // 내자신을 instance로 넣어줍니다.
-            DontDestroyOnLoad(gameObject);                              // OnLoad(씬이 로드 되었을때) 자신을 파괴하지 않고 유지
-        }
-        else                                                            
-        {
-                Destroy(this.gameObject);                               // 둘 이상 존재하면 안되는 객체이니 방금 AWake된 자신을 삭제
-        }
+        instance = this;                                            // 내자신을 instance로 넣어줍니다.
     }
 
     public void Start()
     {
-        
+
     }
 
     public void Update()
@@ -48,11 +42,11 @@ public class GameManager : MonoBehaviour
         remainSP.text = reamain.ToString();
     }
 
-    
+
 
     public void Upgrade()
     {
-       
+
 
     }
 
@@ -84,4 +78,11 @@ public class GameManager : MonoBehaviour
     // 몬스터를 죽이면 + 10 SP  -- 라운드 올라갈때마다 얻는 sp+10
     // 주사위를 소환할 때마다 필요수치가 10씩 늘어남
 
+    private void OnDestroy()
+    {
+        foreach (var dice in Inventory.Instance.diceDatas)
+        {
+            dice.enforce = 1;
+        }
+    }
 }
