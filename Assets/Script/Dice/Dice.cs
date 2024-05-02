@@ -21,20 +21,20 @@ public enum Dice_category
 
 public class Dice : MonoBehaviour
 {
-    [SerializeField] protected GameObject bullet;                              // 총알
+    [SerializeField] protected GameObject bullet;                              // 총알 => 오브젝트 풀링
 
     protected List<Bullet> bullets = new List<Bullet>();             // 총알 리스트를 bullets에 담는다 
 
     [SerializeField]
-    protected int damage;                                         // 공격력
-    public int level = 0;                                         // 파워
-    public int eyes = 1;                                          // 주사위 레벨(눈금)
-    public float DPS = 0.7f;                                  // 총알 속도
+    protected int damage;                                           // 공격력
+    public int level = 1;                                           // 파워 레벨
+    public int eyes = 1;                                            // 주사위 눈금
+    public float DPS = 0.7f;                                        // 총알 속도
     public Dice_category category;
 
     protected void Awake()
     {
-        var fusion = GetComponent<FusionManager>();
+        //var fusion = GetComponent<FusionManager>();
     }
 
     protected virtual void Start()                                               // 총알 = 오브젝트 풀링
@@ -64,26 +64,20 @@ public class Dice : MonoBehaviour
 
     protected virtual void Update()
     {
-        DPS -= Time.deltaTime;                                                       // DPS 1로 설정해둬서 1초마다 발사
+        DPS -= Time.deltaTime;                                                      // DPS에 따라 발사 속도 바뀜
         if (DPS <= 0)
         {
-            if (SpawnManager.instance.currentTarget != null)          // SpawnManager에서 생성한 적이 현재 있으면
+            if (SpawnManager.instance.currentTarget != null)                        // SpawnManager에서 생성한 적이 현재 있으면
             {
-                StopAllCoroutines();                                                    // 모든 코루틴 멈추고
-                StartCoroutine(Shot());                                                // 현재 타겟 적을 향해 발사 코루틴
+                StopAllCoroutines();                                                // 모든 코루틴 멈추고
+                StartCoroutine(Shot());                                             // 현재 타겟 적을 향해 발사 코루틴
 
-                DPS = 0.7f;                                                                   // rateTime이 0이 되었으므로 1로 다시 초기화
+                DPS = 0.7f;                                                         // rateTime이 0이 되었으므로 1로 다시 초기화
             }
         }
-        
-
-        // ���ݵ����̸��� �Ѿ� ������ �Ѿ� Ÿ�� ���� 
-
-        // ���� ������ = �ڷ�ƾ���� �ذ� (2�� 3�� ... ������ ����������...)
-
-        // ���̽� ������ ��  �ν���Ƽ����Ʈ �ؼ� ���� ����
     }
 
+    // 다이스 눈금 세팅 함수
     public void SetDiceEye()
     {
         int child_count = this.transform.childCount;
@@ -118,6 +112,7 @@ public class Dice : MonoBehaviour
         }
     }
 
+    // 총알 발사 코루틴
     protected virtual IEnumerator Shot()
     {
         while (true)

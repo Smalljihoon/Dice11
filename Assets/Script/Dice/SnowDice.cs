@@ -11,15 +11,16 @@ public class SnowDice : Dice
 
     protected override void Start()
     {
-        for (int i = 0; i < eyes; ++i)                                                                // 주사위 눈금만큼 반복문
+        for (int i = 0; i < eyes; ++i)                                                                  // 주사위 눈금만큼 반복문
         {
-            GameObject bulletGO = Instantiate(bullet, transform);                // 주사위에 총알을 생성 = bulletGO
-            bulletGO.GetComponent<Renderer>().material.color = new Color(0, 56 / 255f, 77 / 255f);          // 총알 색상을 눈금 색과 맞춤
-            bulletGO.SetActive(false);                                                              // 발사전-> 총알 비활성화
-            Bullet bulletItem = bulletGO.GetComponent<Bullet>();              // bulletGO에 달린 총알 스크립트 불러오기 = bulletItem
-            bulletGO.transform.localPosition = Vector3.zero;                         // 총알은 주사위의 자식 -> 위치를 000으로 하면서 주사위 가운데에 위치함
+            GameObject bulletGO = Instantiate(bullet, transform);                                       // 주사위에 총알을 생성 = bulletGO
+            var bulletColor = bulletGO.GetComponent<Renderer>().material.color;
+            bulletColor = new Color(0, 56 / 255f, 77 / 255f);                                           // 총알 색상을 눈금 색과 맞춤
+            bulletGO.SetActive(false);                                                                  // 발사전-> 총알 비활성화
+            Bullet bulletItem = bulletGO.GetComponent<Bullet>();                                        // bulletGO에 달린 총알 스크립트 불러오기 = bulletItem
+            bulletGO.transform.localPosition = Vector3.zero;                                            // 총알 위치 정렬화 => 다이스 중앙
 
-            bullets.Add(bulletItem);                                                                 // 생성된 총알을 bullets리스트에 담는다
+            bullets.Add(bulletItem);                                                                    // 생성된 총알을 bullets리스트에 담는다
         }
 
         category = Dice_category.Snow;
@@ -29,15 +30,15 @@ public class SnowDice : Dice
 
     protected override void Update()
     {
-        DPS -= Time.deltaTime;                                                       // DPS 1로 설정해둬서 1초마다 발사
+        DPS -= Time.deltaTime; 
         typhoonCount -= Time.deltaTime;
         if (DPS <= 0)
         {
-            if (SpawnManager.instance.currentTarget != null)          // SpawnManager에서 생성한 적이 현재 있으면
+            if (SpawnManager.instance.currentTarget != null)                            // SpawnManager에서 생성한 적이 현재 있으면
             {
                 StopAllCoroutines();                                                    // 모든 코루틴 멈추고
-                StartCoroutine(Shot());                                                // 현재 타겟 적을 향해 발사 코루틴
-                DPS = 0.6f;                                                                   // rateTime이 0이 되었으므로 1로 다시 초기화
+                StartCoroutine(Shot());                                                 // 현재 타겟 적을 향해 발사 코루틴
+                DPS = 0.6f;                                                             
                 Debug.Log("일반 공격");
             }
         }
@@ -62,7 +63,7 @@ public class SnowDice : Dice
             {
                 StopAllCoroutines();
                 DPS = 0.1f;
-                typhoonsceond-= Time.deltaTime;
+                typhoonsceond -= Time.deltaTime;
                 if (DPS <= 0)
                 {
                     if (SpawnManager.instance.currentTarget != null)          // SpawnManager에서 생성한 적이 현재 있으면
@@ -74,7 +75,7 @@ public class SnowDice : Dice
                     }
                 }
 
-                 if(typhoonsceond <= 0)
+                if (typhoonsceond <= 0)
                 {
                     StopAllCoroutines();
                     DPS = 0.6f;
@@ -83,4 +84,5 @@ public class SnowDice : Dice
             }
         }
     }
+    // 이 외는 Dice와 동일
 }
