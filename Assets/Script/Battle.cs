@@ -9,8 +9,4 @@ public class Battle : MonoBehaviour
     {
         SceneManager.LoadScene("Battle");
     }
-    void Update()
-    {
-        
-    }
 }
