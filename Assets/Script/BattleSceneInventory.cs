@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BettleSceneInventory : MonoBehaviour
+public class BattleSceneInventory : MonoBehaviour
 {
     [SerializeField] private InvenDeck[] decks = null;
 
@@ -10,14 +10,14 @@ public class BettleSceneInventory : MonoBehaviour
     {
         for (int i = 0; i < Inventory.Instance.diceDatas.Length; ++i)
         {
-            var data = Inventory.Instance.diceDatas[i];
+            DiceData data = Inventory.Instance.diceDatas[i];
 
             if (data == null)
                 continue;
 
             if (data.category != Dice_category.None)
             {
-                foreach (var deck in decks)
+                foreach (InvenDeck deck in decks)
                 {
                     if (deck.data.category == Dice_category.None)
                     {

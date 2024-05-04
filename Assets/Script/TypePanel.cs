@@ -6,15 +6,16 @@ using UnityEngine.UI;
 
 public class TypePanel : MonoBehaviour
 {
-   public  Image diceImage = null;
-    [SerializeField] TMP_Text text = null;
     [SerializeField] private ExplanationPanel explanationPanel = null;
-        public GameObject go;
+    [SerializeField] TMP_Text text = null;
+
+    public Image diceImage = null;
+    public GameObject go;
     //현재 선택된 다이스의 카테고리
     public Dice_category category;
 
     //판넬 표시시 초기화
-    public void SetPanel(Sprite sprite, string text, Dice_category category,GameObject prefab)
+    public void SetPanel(Sprite sprite, string text, Dice_category category, GameObject prefab)
     {
         diceImage.GetComponent<Image>().sprite = sprite;
         var str = text.Replace('-', '\n');
@@ -27,7 +28,7 @@ public class TypePanel : MonoBehaviour
     public void OnButtonClick_Select()
     {
         // 다이스 선택시 인벤토리에 세팅 
-        explanationPanel.SetDice(category, diceImage.sprite,go);
+        explanationPanel.SetDice(category, diceImage.sprite, go);
     }
 }
 

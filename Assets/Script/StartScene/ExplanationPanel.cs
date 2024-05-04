@@ -11,7 +11,7 @@ public class ExplanationPanel : MonoBehaviour
     {
         for (int i = 0; i < Inventory.Instance.diceDatas.Length; ++i)
         {
-            var data = Inventory.Instance.diceDatas[i];
+            DiceData data = Inventory.Instance.diceDatas[i];
 
             if (data == null)
                 continue;
@@ -122,7 +122,7 @@ public class ExplanationPanel : MonoBehaviour
         for (int i = 0; i < 5; ++i)
         {
             Inventory.Instance.diceDatas[i] = new DiceData();
-            var invenData = Inventory.Instance.diceDatas[i];
+            DiceData invenData = Inventory.Instance.diceDatas[i];
             invenData.diceimg = decks[i].data.diceimg;
             invenData.category = decks[i].data.category;
             invenData.prefab = decks[i].data.prefab;
