@@ -9,17 +9,16 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float speed;                           // 적 이동속도
-    [SerializeField] float distance;                        // ray 거리
-    [SerializeField] TMP_Text hp_text;                      // 적 체력
-    public GameObject dmgTextPrefab;                        // 데미지 프리팹
-    public Transform dmgPos;                                // 데미지 생성할 위치
-
-    int hp = 0;                                             // 초기화한 체력변수
-    int life = 3;                                           // 플레이어 체력(하트 3목숨)
+    [SerializeField] float speed;                               // 적 이동속도
+    [SerializeField] float distance;                           // raycast 거리
+    [SerializeField] TMP_Text hp_text;                    // 적 체력
+    public GameObject dmgTextPrefab;                // 데미지 프리팹
+    public Transform dmgPos;                               // 데미지 생성할 위치
+    int hp = 0;                                                        // 초기화한 체력변수
+    int life = 3;                                                       // 플레이어 체력(하트 3목숨)
 
     public Vector3[] directions = new Vector3[3];           // 몬스터가 방향을 바꿔야할 포인트 벡터배열
-    private int count = 0;                                  // 배열값에 넣어줄 카운트 매개변수
+    private int count = 0;                                                  // 배열값에 넣어줄 카운트 매개변수
     private int enemyID = 0;
 
     private void Start()
@@ -40,11 +39,11 @@ public class Enemy : MonoBehaviour
     {
         var pos = transform.position;                                   // pos = enemy 포지션
 
-        Debug.DrawRay(pos, directions[count], new Color(1, 0, 0));      // ray그리기 ( pos에서 directions[]방향으로 & 색상
+        Debug.DrawRay(pos, directions[count], new Color(1, 0, 0));      // ray그리기 ( pos에서 directions[]방향으로, ray색상 )
 
         var hit = Physics2D.Raycast(pos, directions[count], distance, LayerMask.GetMask("Wall"));
 
-        if (hit.collider != null)
+        if (hit.collider != null)   //충돌시 count를 올려 이동방향을 바꿔줌
             count++;
     }
 
@@ -74,6 +73,7 @@ public class Enemy : MonoBehaviour
 
         if (hp <= 0)
         {
+            SoundManager.instance.EnemyDie();
             GameManager.instance.PlusRemain(SpawnManager.instance.Round * 10);
 
             if (SpawnManager.instance.enemyCount - 1 == enemyID)

@@ -5,6 +5,7 @@ public class FusionManager : MonoBehaviour
     [SerializeField] GameObject[] dice;     // 주사위들
 
     private Dice selectDice = null;         // 처음 마우스 클릭했을때 선택된 주사위
+    private SpriteRenderer renderer = null;
     Transform hittOB = null;                // 처음 마우스 클릭했을때 감지되는 객체
 
     public LayerMask layer;                 // 레이를 쐈을 때 슬롯에 박스콜라이더가 있기 때문에 슬롯기준으로 판단할 것 Layer = "Slot"
@@ -35,6 +36,8 @@ public class FusionManager : MonoBehaviour
                     hittOB = hitt.transform;
                     selectDice = hitt.transform.GetChild(0).GetComponent<Dice>();   // selectDice변수에 -> 레이를 맞은 슬롯의 자식(다이스)의 Dice 컴포넌트를 찾아온다
                     offset = selectDice.transform.position - MouseWorldPosition();  // 마우스와 클릭했을때의 다이스와의 위치 정렬화
+                    renderer= selectDice.GetComponent<SpriteRenderer>();
+                    renderer.sortingOrder = 50;
                 }
             }
         }
@@ -113,16 +116,19 @@ public class FusionManager : MonoBehaviour
                             else // 예외처리
                             {
                                 selectDice.transform.localPosition = Vector3.zero;
+                                renderer.sortingOrder = 1;
                             }
                         }
                         else // 예외처리
                         {
                             selectDice.transform.localPosition = Vector3.zero;
+                            renderer.sortingOrder = 1;
                         }
                     }
                     else // 예외처리
                     {
                         selectDice.transform.localPosition = Vector3.zero;
+                        renderer.sortingOrder = 1;
                     }
 
                     selectDice = null;

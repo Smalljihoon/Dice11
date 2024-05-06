@@ -31,23 +31,10 @@ public class GameManager : MonoBehaviour
         instance = this;                                            // 내자신을 instance로 넣어줍니다.
     }
 
-    public void Start()
-    {
-
-    }
-
     public void Update()
     {
         needSP.text = need.ToString();
         remainSP.text = reamain.ToString();
-    }
-
-
-
-    public void Upgrade()
-    {
-
-
     }
 
     public void Init(int Plus, int Minus)

@@ -402,3 +402,7 @@ MonoBehaviour:
   hp_text: {fileID: 5711763984424385227}
   dmgTextPrefab: {fileID: 6190842860505224168, guid: 16db4ed663b2dc1408860df2df69cb72, type: 3}
   dmgPos: {fileID: 3050594641779121543}
+  directions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}

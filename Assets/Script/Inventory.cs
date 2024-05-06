@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,8 +16,7 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory Instance = null;
 
-    //public InvenDeck[] dice = new InvenDeck[5];
-
+    //public AudioSource UI_BTsound;
     public DiceData[] diceDatas = new DiceData[5];
 
     //½Ì±ÛÅæ »ý¼º
@@ -36,11 +36,11 @@ public class Inventory : MonoBehaviour
     public void Enforce(Dice_category category)
     {
         DiceData diceData = null;
-        foreach (var d in diceDatas)
+        foreach (var data in diceDatas)
         {
-            if (d.category == category)
+            if (data.category == category)
             {
-                diceData = d;
+                diceData = data;
                 break;
             }
         }

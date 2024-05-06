@@ -27,7 +27,7 @@ public class Dice : MonoBehaviour
 
     [SerializeField]
     protected int damage;                                           // 공격력
-    protected int enforce;                                           // 공격력
+    protected int enforce;                                           // 강화
 
     public int level = 1;                                           // 파워 레벨
     public int eyes = 1;                                            // 주사위 눈금
@@ -36,10 +36,6 @@ public class Dice : MonoBehaviour
 
     public Dice_category category;
     protected Color bulletColor;
-    protected void Awake()
-    {
-        //var fusion = GetComponent<FusionManager>();
-    }
 
     protected virtual void Start()                                               // 총알 = 오브젝트 풀링
     {
@@ -56,9 +52,25 @@ public class Dice : MonoBehaviour
         SetEnforceFromInventory();
     }
 
+    protected virtual void Update()
+    {
+        DPS -= Time.deltaTime;                                                      // DPS에 따라 발사 속도 바뀜
+
+        if (DPS <= 0)
+        {
+            if (SpawnManager.instance.currentTarget != null)                        // SpawnManager에서 생성한 적이 현재 있으면
+            {
+                StopAllCoroutines();                                                // 모든 코루틴 멈추고
+                StartCoroutine(Shot());                                             // 현재 타겟 적을 향해 발사 코루틴
+                
+                DPS = oriDPS;                                                         // rateTime이 0이 되었으므로 1로 다시 초기화
+            }
+        }
+    }
+
     protected virtual void OnDestroy()
     {
-        StopAllCoroutines();                            // 총알을 파괴하기 전 모든 코루틴 멈추기
+        StopAllCoroutines();                          
 
         foreach (var bulletGO in bullets)
         {
@@ -69,22 +81,6 @@ public class Dice : MonoBehaviour
 
         GameManager.instance.spawner.RemoveDice(this);
     }
-
-    protected virtual void Update()
-    {
-        DPS -= Time.deltaTime;                                                      // DPS에 따라 발사 속도 바뀜
-        if (DPS <= 0)
-        {
-            if (SpawnManager.instance.currentTarget != null)                        // SpawnManager에서 생성한 적이 현재 있으면
-            {
-                StopAllCoroutines();                                                // 모든 코루틴 멈추고
-                StartCoroutine(Shot());                                             // 현재 타겟 적을 향해 발사 코루틴
-
-                DPS = oriDPS;                                                         // rateTime이 0이 되었으므로 1로 다시 초기화
-            }
-        }
-    }
-
     // 다이스 눈금 세팅 함수
     public void SetDiceEye()
     {
@@ -123,6 +119,7 @@ public class Dice : MonoBehaviour
     // 총알 발사 코루틴
     protected virtual IEnumerator Shot()
     {
+
         while (true)
         {
             List<GameObject> list = new List<GameObject>();

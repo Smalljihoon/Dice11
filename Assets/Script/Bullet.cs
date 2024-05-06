@@ -8,11 +8,10 @@ using UnityEngine.UIElements;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] float speed;               // 총알 속도
+    [SerializeField] float speed;                                                   // 총알 속도
     [SerializeField] ParticleSystem bulletParticle;
-
-    private Transform target;                   // 타겟
-    private int attackDamage = 0;               // 공격력을 담을 매개변수
+    private Transform target;                                                       // 타겟
+    private int attackDamage = 0;                                               // 공격력을 담을 매개변수
 
     public void Init(int damage, Transform target)      // 공격력과 타겟 초기화 ( 앞으로 요청한 값을 받는 곳)
     {
@@ -33,7 +32,7 @@ public class Bullet : MonoBehaviour
 
         //타겟 방향으로 이동 
         transform.Translate((target.position - transform.position).normalized * speed * Time.deltaTime);
-
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)         // 총알 트리거 감지시
@@ -44,7 +43,7 @@ public class Bullet : MonoBehaviour
         {
             // Contacts
             // ContactPoint contactPoint = collision.GetContacts(contacts[0])
-            bulletParticle.Play();
+            //bulletParticle.Play();
 
             enemy.Damage(attackDamage);                         // enemy의 Damage함수를 불러 damage함수에서 받는 매개변수에 attackDamage대입
             

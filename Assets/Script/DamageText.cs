@@ -5,12 +5,13 @@ using TMPro;
 
 public class DamageText : MonoBehaviour
 {
-    public float movePosition;          // 텍스트 이동방향
-    public float alphaSpeed;             // 투명도 변환속도
-    public float destroyTime;
-    TextMeshPro text;
+    [SerializeField] float movePosition;          // 텍스트 이동 목표 위치
+    [SerializeField] float alphaSpeed;             // 투명도 변환속도
+    [SerializeField] float destroyTime;           // 텍스트 파괴까지 걸리는 시간
+
+    TextMeshPro text;   // 데미지 수치
     Color alpha;
-    public int damage;
+    public int damage;          // Enemy에서 받은 데미지 받아옴
 
     float time = 0;
 
@@ -25,7 +26,7 @@ public class DamageText : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        transform.localPosition = new Vector3(0, Mathf.Lerp(0, movePosition, time), 0);
+        transform.localPosition = new Vector3(0, Mathf.Lerp(0, movePosition, time), 0); // Lerp ( 처음위치, 목표위치, 속도?)
         alpha.a = Mathf.Lerp(alpha.a, 0, Time.deltaTime * alphaSpeed);
         text.color = alpha;
     }

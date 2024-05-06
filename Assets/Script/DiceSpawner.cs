@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class DiceSpawner : MonoBehaviour
 {
-    [SerializeField] Button bt;
-    [SerializeField] public List<GameObject> diceprefabs =new List<GameObject>();
+    [SerializeField] Button bt;             // 다이스 소환 버튼
+    [SerializeField] public List<GameObject> diceprefabs =new List<GameObject>();   // 전투씬에서 사용되는 주사위 프리팹
 
-    [SerializeField] Transform[] slots = null;
+    [SerializeField] Transform[] slots = null;              // 보드 내에 있는 슬롯들
     public List<Dice> dices = new List<Dice>();
 
     public int usePlus = 10;    // 소환시 필요 sp 가중치

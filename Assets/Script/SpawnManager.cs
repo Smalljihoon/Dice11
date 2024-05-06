@@ -17,9 +17,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] float spawnRate;                   // 스폰주기
 
     [SerializeField] public TMP_Text roundtext;                // 라운드 tmp text
-    [SerializeField] public GameObject Alarm;                  //
+    [SerializeField] public GameObject Alarm;                  // 라운드 알람
     [SerializeField] Transform alarmParent;             //
     [SerializeField] GameObject Lose;
+    [SerializeField] GameObject Warn;
 
     public Enemy currentTarget = null;                  // 현재 타겟 (queue의 첫번째)
     public int enemyCount = 30;                        // 라운드당 스폰 마릿수
@@ -31,9 +32,6 @@ public class SpawnManager : MonoBehaviour
     private int genCount = 0;
     float rateTime;                                     // 스폰주기
     float waitTime = 10;                            // 대기 시간
-    float wait = 3f;
-    float stop;
-
 
     private void Awake()
     {
@@ -43,13 +41,10 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         rateTime = spawnRate;                           // 컴포넌트에서 입력한 spawnRate을 rateTime으로 정의 
-        stop = wait;
     }
 
     void Update()
     {
-
-
         if (isClear && genCount == enemyCount)
         {
             waitTime -= Time.deltaTime;
@@ -62,12 +57,9 @@ public class SpawnManager : MonoBehaviour
                 Alarm.SetActive(false);
                 Debug.Log("라운드 : " + Round);
             }
-
-            // 라운드 몇 띄우기
         }
         else// if(!isClear)
         {
-
             rateTime -= Time.deltaTime;                     // Time.deltaTime과의 연산을 통해 스폰주기 (적 간격)
 
             if (rateTime <= 0.0f && genCount < enemyCount)
@@ -91,15 +83,26 @@ public class SpawnManager : MonoBehaviour
         {
             LifeImage[life - 1].enabled = false;
             life--;
+            SoundManager.instance.HpDown();
+            if (life == 1)
+            {
+                SoundManager.instance.Warning();
+                Warn.SetActive(true);
+                Invoke("SetWarn", 3f);
+            }
         }
-        // 체력이 0이면 3초뒤 로비화면
+        // 체력이 0이면 3초뒤 로비화면 = 게임오버
         if (life == 0)
         {
             Lose.SetActive(true);
 
             Invoke("SceneChange", 3f);
-            //게임오버 
         }
+    }
+
+    public void SetWarn()
+    {
+        Warn.SetActive(false);
     }
 
     public void SceneChange()
