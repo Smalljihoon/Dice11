@@ -2383,7 +2383,6 @@ MonoBehaviour:
   Need_upgrade: {fileID: 889763574}
   LV: {fileID: 1320724698}
   PowerUp: {fileID: 852772900}
-  powerParent: {fileID: 1604807101}
   isSelect: 0
 --- !u!82 &621049694
 AudioSource:
@@ -4374,7 +4373,6 @@ MonoBehaviour:
   Need_upgrade: {fileID: 723800103}
   LV: {fileID: 1514804165}
   PowerUp: {fileID: 837747942}
-  powerParent: {fileID: 1604807101}
   isSelect: 0
 --- !u!82 &925375949
 AudioSource:
@@ -7437,7 +7435,6 @@ MonoBehaviour:
   Need_upgrade: {fileID: 236813455}
   LV: {fileID: 889656464}
   PowerUp: {fileID: 1727901667}
-  powerParent: {fileID: 1604807101}
   isSelect: 0
 --- !u!82 &1630208660
 AudioSource:
@@ -7892,7 +7889,6 @@ MonoBehaviour:
   Need_upgrade: {fileID: 1567043090}
   LV: {fileID: 813243829}
   PowerUp: {fileID: 787124229}
-  powerParent: {fileID: 1604807101}
   isSelect: 0
 --- !u!82 &1643904574
 AudioSource:
@@ -8593,10 +8589,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceimg: {fileID: 1787110613}
-  Need_upgrade: {fileID: 889763574}
+  Need_upgrade: {fileID: 1077324889}
   LV: {fileID: 1009024266}
   PowerUp: {fileID: 635675131}
-  powerParent: {fileID: 1604807101}
   isSelect: 0
 --- !u!82 &1787110616
 AudioSource:

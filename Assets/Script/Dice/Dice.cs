@@ -25,11 +25,10 @@ public class Dice : MonoBehaviour
 
     protected List<Bullet> bullets = new List<Bullet>();             // 총알 리스트를 bullets에 담는다 
 
-    [SerializeField]
-    protected int damage;                                           // 공격력
-    protected int enforce;                                           // 강화
+    [SerializeField] protected int damage;                                           // 공격력
+    [SerializeField] protected int enforce;                                           // 강화
 
-    public int level = 1;                                           // 파워 레벨
+    //public int level = 1;                                           // 파워 레벨
     public int eyes = 1;                                            // 주사위 눈금
     public float DPS = 0.7f;                                        // 총알 속도
     public float oriDPS = 0.7f;

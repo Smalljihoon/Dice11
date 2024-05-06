@@ -29,7 +29,7 @@ public class Spawn : MonoBehaviour
             // 라운드 레벨에 따라서 
             // 라운드 레벨 같은거는 게임매니저가 가지고있을 가능성이 높음 
             // 몹 체력 조절 
-            enemy.Init((SpawnManager.instance.Round - 1) * 100 + 20, enemyID);             // (라운드 - 1) * 100 + 200
+            enemy.Init((SpawnManager.instance.Round - 1) * 100 + 200, enemyID);             // (라운드 - 1) * 100 + 200
             return enemy;
     }
 }

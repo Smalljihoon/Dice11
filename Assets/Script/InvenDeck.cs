@@ -9,7 +9,7 @@ public class InvenDeck : MonoBehaviour
     [SerializeField] private Image diceimg;         // 다이스 이미지
     [SerializeField] TMP_Text Need_upgrade;     // 업그레이드시 필요한 sp수치
     [SerializeField] TMP_Text LV;                         // 강화단계 레벨
-    [SerializeField] GameObject PowerUp;         // 파워업 표시? 프리팹
+    [SerializeField] GameObject PowerUp;         // 파워업 표시 프리팹
 
     public DiceData data = null;
 
@@ -19,6 +19,11 @@ public class InvenDeck : MonoBehaviour
     private void Awake()
     {
         data = new DiceData();
+    }
+
+    public void Update()
+    {
+        
     }
     //덱초기화 하는 함수 
     public void SetDeck(Dice_category category, Sprite diceimg, GameObject go)
@@ -55,24 +60,25 @@ public class InvenDeck : MonoBehaviour
     {
         if (data.category != Dice_category.None)
         {
-            int SetEnforce = 1;
-
+            int SetEnforce = data.enforce;                                  // 버그 발생
             Inventory.Instance.Enforce(data.category);
             SetEnforce++;
+
             LV.text = "LV." + SetEnforce.ToString();
 
             PowerUp.SetActive(true);
-            Invoke("Original", 1.5f);
+            Invoke("ActiveOff", 1.5f);
 
             var need = SetEnforce * 100;
             Need_upgrade.text = need.ToString();
 
+            data.enforce = SetEnforce;
             AudioSource audio = GetComponent<AudioSource>();
             audio.Play();
         }
     }
 
-    public void Original()
+    public void ActiveOff()
     {
         PowerUp.SetActive(false);
     }

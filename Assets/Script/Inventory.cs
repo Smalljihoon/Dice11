@@ -16,7 +16,6 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory Instance = null;
 
-    //public AudioSource UI_BTsound;
     public DiceData[] diceDatas = new DiceData[5];
 
     //½Ì±ÛÅæ »ý¼º
@@ -33,6 +32,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    // °­È­
     public void Enforce(Dice_category category)
     {
         DiceData diceData = null;

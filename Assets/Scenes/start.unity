@@ -5142,6 +5142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explanationPanel: {fileID: 369017598}
   typePanel: {fileID: 1096015943}
+  battlebutton: {fileID: 0}
 --- !u!4 &1846268311
 Transform:
   m_ObjectHideFlags: 0
