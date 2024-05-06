@@ -102,7 +102,7 @@ public class FusionManager : MonoBehaviour
                                         Destroy(hittOB.GetChild(0).gameObject);     // 클릭했었던 다이스 파괴
                                         Destroy(hitOB.GetChild(0).gameObject);      // 떼어 냈을 때 다이스 파괴
                                         // 다이스 랜덤 생성 떼어냈을 때의 위치에서
-                                        var temp = dice[Random.Range(0, dice.Length)];
+                                        var temp = dice[Random.Range(0, GameManager.instance.spawner.diceprefabs.Count)];
                                         var diceGO = Instantiate(temp, hitOB);
                                         // 다이스 눈금 올려주는 과정
                                         var newDice = diceGO.GetComponent<Dice>();
