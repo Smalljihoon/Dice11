@@ -16,23 +16,22 @@ public class StartSceneManager : MonoBehaviour
         Instance = this;
     }
 
-    //private void Update()
-    //{
-    //    for (int i = 0; i < Inventory.Instance.diceDatas.Length; ++i)
-    //    {
-    //        DiceData data = Inventory.Instance.diceDatas[i];
+    private void Update()
+    {
+        bool interactable = true;
 
-    //        if (data == null)
-    //            continue;
+        for (int i = 0; i < explanationPanel.decks.Length; ++i)
+        {
+            var data = explanationPanel.decks[i];
 
-    //        if (data.category == Dice_category.None)
-    //        {
-    //            battlebutton.GetComponent<Button>().interactable = false;
-    //        }
-    //        else
-    //            battlebutton.GetComponent<Button>().interactable = true;
-    //    }
-    //}
+            if (data.data == null || data.data.category == Dice_category.None)
+            {
+                interactable = false;
+                break;
+            }
+        }
+        battlebutton.GetComponent<Button>().interactable = interactable;
+    }
 
     public void OnButtonClick_StartBattleScene()
     {

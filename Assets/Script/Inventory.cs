@@ -50,19 +50,17 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        if (diceData.enforce * 100 <= GameManager.instance.reamain)
+        if (diceData.enforce * 00 <= GameManager.instance.reamain)
         {
-            if (diceData.enforce < 7)
-            {
-                GameManager.instance.reamain -= diceData.enforce * 100;
-                diceData.enforce++;
 
-                foreach (var dice in GameManager.instance.spawner.dices)
+            GameManager.instance.reamain -= diceData.enforce * 00;
+            diceData.enforce++;
+
+            foreach (var dice in GameManager.instance.spawner.dices)
+            {
+                if (dice.category == category)
                 {
-                    if(dice.category == category)
-                    {
-                        dice.SetEnforce(diceData.enforce);
-                    }
+                    dice.SetEnforce(diceData.enforce);
                 }
             }
         }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class FusionManager : MonoBehaviour
 {
     [SerializeField] GameObject[] dice;     // 주사위들
+    
 
     private Dice selectDice = null;         // 처음 마우스 클릭했을때 선택된 주사위
     private SpriteRenderer renderer = null;
@@ -83,14 +84,43 @@ public class FusionManager : MonoBehaviour
                                     // 첫 클릭 했을 때 다이스가 조커인가부터 체크
                                     if (selectDice.category == Dice_category.Joker)
                                     {
-                                        // 뗐을 때 다이스와 동일한 다이스로 copy의 변수에 새로 생성
-                                        var copy = Instantiate(hitdice, hittOB);
-                                        // 원래 있던 자리로 복귀
-                                        copy.transform.localPosition = Vector3.zero;
-                                        // 기존 조커다이스 파괴
-                                        Destroy(hittOB.GetChild(0).gameObject);
+                                        if(hitdice.category == Dice_category.Joker)
+                                        {
+                                            // 합쳐질 때 눈금을 올리기 위해 임의로 hitdice의 눈금을 올린다
+                                            int remain = hitdice.eyes;
+                                            remain++;
+                                            Debug.Log("조합");    // 조합이 이뤄지는지 체크하기위한 로그
+                                            Destroy(hittOB.GetChild(0).gameObject);     // 클릭했었던 다이스 파괴
+                                            Destroy(hitOB.GetChild(0).gameObject);      // 떼어 냈을 때 다이스 파괴
+                                                                                        // 다이스 랜덤 생성 떼어냈을 때의 위치에서
+                                            DiceData temp = Inventory.Instance.diceDatas[Random.Range(0, Inventory.Instance.diceDatas.Length)];
 
-                                        GameManager.instance.spawner.dices.Add(copy.GetComponent<Dice>());
+                                            var diceGO = Instantiate(temp.prefab, hitOB);
+                                            // 다이스 눈금 올려주는 과정
+                                            var newDice = diceGO.GetComponent<Dice>();
+                                            newDice.eyes = remain;
+                                            // SetDiceEye = 다이스 자식에 각 눈금별로 자식을 생성 해뒀기에 눈금에 맞는 자식을 활성화 시켜주는 함수
+                                            newDice.SetDiceEye();
+                                            GameManager.instance.spawner.dices.Add(newDice);
+                                        }
+                                        else
+                                        {
+                                            // 뗐을 때 다이스와 동일한 다이스로 copy의 변수에 새로 생성
+                                            var copy = Instantiate(hitdice.gameObject, hittOB);
+                                            var eye = hitdice.eyes;
+
+                                            // 원래 있던 자리로 복귀
+                                            copy.transform.localPosition = Vector3.zero;
+                                            // 기존 조커다이스 파괴
+                                            Destroy(hittOB.GetChild(0).gameObject);
+
+                                            var copyDice = copy.GetComponent<Dice>();
+                                            copyDice.eyes = eye++;
+                                            copyDice.SetDiceEye();
+
+                                            GameManager.instance.spawner.dices.Add(copyDice);
+                                        }
+                                   
                                     }
                                     // 두 다이스가 같은 다이스라면
                                     else
@@ -102,8 +132,9 @@ public class FusionManager : MonoBehaviour
                                         Destroy(hittOB.GetChild(0).gameObject);     // 클릭했었던 다이스 파괴
                                         Destroy(hitOB.GetChild(0).gameObject);      // 떼어 냈을 때 다이스 파괴
                                         // 다이스 랜덤 생성 떼어냈을 때의 위치에서
-                                        var temp = dice[Random.Range(0, GameManager.instance.spawner.diceprefabs.Count)];
-                                        var diceGO = Instantiate(temp, hitOB);
+                                        DiceData temp = Inventory.Instance.diceDatas[Random.Range(0, Inventory.Instance.diceDatas.Length)];
+
+                                        var diceGO = Instantiate(temp.prefab, hitOB);
                                         // 다이스 눈금 올려주는 과정
                                         var newDice = diceGO.GetComponent<Dice>();
                                         newDice.eyes = remain;

@@ -60,21 +60,23 @@ public class InvenDeck : MonoBehaviour
     {
         if (data.category != Dice_category.None)
         {
-            int SetEnforce = data.enforce;                                  // 버그 발생
-            Inventory.Instance.Enforce(data.category);
-            SetEnforce++;
+            if (data.enforce < 7)
+            {
+                Inventory.Instance.Enforce(data.category);
+                data.enforce++;                                  // 버그 발생
 
-            LV.text = "LV." + SetEnforce.ToString();
+                LV.text = "LV." + data.enforce.ToString();
 
-            PowerUp.SetActive(true);
-            Invoke("ActiveOff", 1.5f);
+                PowerUp.SetActive(true);
+                Invoke("ActiveOff", 1.5f);
 
-            var need = SetEnforce * 100;
-            Need_upgrade.text = need.ToString();
+                var need = data.enforce * 100;
+                Need_upgrade.text = need.ToString();
 
-            data.enforce = SetEnforce;
-            AudioSource audio = GetComponent<AudioSource>();
-            audio.Play();
+                AudioSource audio = GetComponent<AudioSource>();
+                audio.Play();
+            }
+         
         }
     }
 

@@ -28,7 +28,6 @@ public class Dice : MonoBehaviour
     [SerializeField] protected int damage;                                           // 공격력
     [SerializeField] protected int enforce;                                           // 강화
 
-    //public int level = 1;                                           // 파워 레벨
     public int eyes = 1;                                            // 주사위 눈금
     public float DPS = 0.7f;                                        // 총알 속도
     public float oriDPS = 0.7f;
@@ -61,7 +60,7 @@ public class Dice : MonoBehaviour
             {
                 StopAllCoroutines();                                                // 모든 코루틴 멈추고
                 StartCoroutine(Shot());                                             // 현재 타겟 적을 향해 발사 코루틴
-                
+
                 DPS = oriDPS;                                                         // rateTime이 0이 되었으므로 1로 다시 초기화
             }
         }
@@ -69,7 +68,7 @@ public class Dice : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-        StopAllCoroutines();                          
+        StopAllCoroutines();
 
         foreach (var bulletGO in bullets)
         {
@@ -89,7 +88,11 @@ public class Dice : MonoBehaviour
             this.transform.GetChild(i).gameObject.SetActive(false);
         }
 
-        if (this.eyes == 2)
+        if (this.eyes == 1)
+        {
+            this.transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else if (this.eyes == 2)
         {
             this.transform.GetChild(1).gameObject.SetActive(true);
         }

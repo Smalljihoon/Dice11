@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExplanationPanel : MonoBehaviour
 {
-    [SerializeField] private InvenDeck[] decks = null;
+    public InvenDeck[] decks = null;
     [SerializeField] Sprite noneSprite = null;
 
     private void Start()
@@ -128,4 +128,5 @@ public class ExplanationPanel : MonoBehaviour
             invenData.prefab = decks[i].data.prefab;
         }
     }
+
 }

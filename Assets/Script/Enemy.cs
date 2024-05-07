@@ -1,11 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
